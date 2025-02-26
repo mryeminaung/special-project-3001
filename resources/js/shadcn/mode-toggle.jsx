@@ -16,7 +16,7 @@ export default function ModeToggle({ className }) {
         <>
             {mounted && (
                 <div
-                    className={`hidden space-x-2 dark:text-white rounded-full border border-gray-300 px-2 sm:flex ${className}`}
+                    className={`flex space-x-2 rounded-full border border-gray-300 px-2 dark:text-white ${className}`}
                 >
                     <Button
                         variant="ghost"

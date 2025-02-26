@@ -19,7 +19,7 @@ export default function AuthLayout({ children }) {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3, ease: 'easeInOut' }}
-                            className="flex flex-1 flex-col gap-4 bg-platinum px-5 pb-10 transition-all dark:bg-main-purple/80 dark:text-white xl:px-10"
+                            className="flex flex-1 flex-col gap-4 bg-platinum px-5 pb-10 transition-all dark:bg-primary-purple/20 dark:text-white xl:px-10"
                         >
                             {children}
                         </motion.main>

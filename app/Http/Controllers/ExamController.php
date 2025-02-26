@@ -51,8 +51,9 @@ class ExamController extends Controller
     public function show($semId)
     {
         $examSchedules = ExamSchedule::where('semester_id', $semId)->get();
+        $courses = Course::where('semester_id', $semId)->with(['program'])->get();
+        $semester = Semester::where('id', $semId)->first();
 
-        $courses = Course::where('semester_id', $semId)->get();
         $mergedData = $examSchedules->map(function ($exam) use ($courses) {
             $course = $courses->firstWhere('id', $exam->course_id);
             return [
@@ -63,6 +64,7 @@ class ExamController extends Controller
 
         return Inertia::render('Timetable/Partials/ExamTimetable', [
             'exams' => $mergedData,
+            'semester' => $semester,
         ]);
     }
 }

@@ -37,9 +37,9 @@ export default function SiteHeader({ title }) {
 
     return (
         <header
-            className={`sticky top-0 z-50 flex items-center gap-2 bg-platinum transition-colors ease-in-out dark:bg-[#282336] ${
+            className={`sticky top-0 z-50 flex items-center gap-2 bg-platinum transition-colors ease-in-out dark:bg-primary-purple/20 ${
                 isBlurred
-                    ? 'bg-platinum/10 shadow-md backdrop-blur-lg dark:bg-[#282336]/20'
+                    ? 'bg-platinum/10 shadow-md backdrop-blur-lg dark:bg-primary-purple/20'
                     : 'shadow-none backdrop-blur-none'
             }`}
         >
@@ -60,7 +60,7 @@ export default function SiteHeader({ title }) {
                                 alt="Dr. Myat Thuzar Tun"
                             />
                             <div className="hidden flex-col items-start md:flex">
-                                <p className='text-black'>{user.name}</p>
+                                <p className="text-black">{user.name}</p>
                                 <span className="text-black/60">
                                     Pro-Rector
                                 </span>
@@ -72,6 +72,14 @@ export default function SiteHeader({ title }) {
                             My Account
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
+                        <DropdownMenuItem asChild>
+                            <Link
+                                className="px-4 py-2 hover:cursor-pointer dark:hover:bg-primary-purple/50"
+                                href="/dashboard"
+                            >
+                                Dashboard
+                            </Link>
+                        </DropdownMenuItem>
                         <DropdownMenuItem asChild>
                             <Link
                                 className="px-4 py-2 hover:cursor-pointer dark:hover:bg-primary-purple/50"

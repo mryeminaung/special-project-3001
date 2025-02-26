@@ -17,6 +17,7 @@ import {
     Settings,
     Users,
 } from 'lucide-react';
+import { useEffect } from 'react';
 import SideBarLink from './sidebar-link';
 import miitLogo from '/public/assets/miit_logo.png';
 
@@ -64,7 +65,23 @@ const SideBarMenu = [
 ];
 
 export function AppSidebar({ ...props }) {
-    const { open } = useSidebar();
+    const { open, state, isMobile, openMobile, setOpen, setOpenMobile } =
+        useSidebar();
+
+    useEffect(() => {
+        localStorage.setItem('sidebarState', 'expanded');
+        localStorage.setItem('sidebarOpen', true);
+    }, []);
+
+    useEffect(() => {
+        if (!isMobile) {
+            localStorage.setItem('sidebarState', state);
+            localStorage.setItem('sidebarOpen', open);
+        } else {
+            // reset the collapsed icon state
+            setOpen(true);
+        }
+    }, [state, isMobile]);
 
     return (
         <Sidebar collapsible="icon" {...props}>
