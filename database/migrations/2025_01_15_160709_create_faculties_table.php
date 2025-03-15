@@ -6,29 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('gender');
-            // $table->string('password')->default('password');
-            $table->string('email');
+            $table->enum('gender', ['male', 'female', 'other']);
             $table->string('phone_number')->unique();
-            $table->foreignId('rank_id')->default(3)->constrained()->cascadeOnDelete();
-            $table->foreignId('department_id')->default(3)->constrained()->cascadeOnDelete();
+            $table->string('email')->unique();
+            $table->foreignId('rank_id')->constrained()->onDelete('cascade');
+            $table->foreignId('department_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_instructor_in_charge')->default(false);
+            $table->integer('max_duties')->default(5); // Maximum duties per faculty
+            $table->integer('current_duties')->default(0); // Current assigned duties
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('faculties');
+        Schema::dropIfExists('faculty');
     }
 };
