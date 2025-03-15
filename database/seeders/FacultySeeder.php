@@ -25,38 +25,43 @@ class FacultySeeder extends Seeder
         ]);
 
         $data = [];
-        $hashedPassword = bcrypt('password');
+        $usedEmails = []; // Track generated emails
 
         for ($faculty = 1; $faculty <= 100; $faculty++) {
-
-            // Define male and female name components
-            $maleNames = ['Aung', 'Kyaw', 'Min', 'Tun', 'Soe', 'Naing'];
-            $femaleNames = ['Moe', 'May', 'Hnin', 'Yin', 'Nwe', 'Thiri'];
-
-            // Even rolls: Male, Odd rolls: Female
             $isMale = $faculty % 2 == 0;
-
             $phoneNo = $this->generatePhoneNo();
-
-            // Determine gender and create a name with up to three parts
             $name = $isMale
-                ? $this->generateName($maleNames, 'U')
-                : $this->generateName($femaleNames, 'Daw');
+                ? $this->generateName(['Aung', 'Kyaw', 'Min', 'Tun', 'Soe', 'Naing'], 'U')
+                : $this->generateName(['Moe', 'May', 'Hnin', 'Yin', 'Nwe', 'Thiri'], 'Daw');
 
-            $email = $this->generateEmail($faculty, $name);
+            // Generate unique email
+            $baseEmail = $this->generateBaseEmail($name);
+            $email = $this->makeUniqueEmail($baseEmail, $usedEmails);
 
             $data[] = [
                 'name' => $name,
                 'email' => $email,
-                // 'password' => $hashedPassword,
                 'gender' => $isMale ? 'Male' : 'Female',
                 'phone_number' => $phoneNo,
                 'rank_id' => fake()->numberBetween(1, Rank::count()),
                 'department_id' => fake()->numberBetween(1, Department::count()),
+                'is_instructor_in_charge' => fake()->boolean(20),
+                'max_duties' => 5,
+                'current_duties' => 0,
                 'created_at' => now(),
             ];
+
+            // Batch insert every 20 records
+            if ($faculty % 20 === 0) {
+                Faculty::insert($data);
+                $data = [];
+            }
         }
-        Faculty::insert($data);
+
+        // Insert remaining records
+        if (!empty($data)) {
+            Faculty::insert($data);
+        }
     }
 
     /**
@@ -66,10 +71,30 @@ class FacultySeeder extends Seeder
      * @param string $name
      * @return string
      */
-    private function generateEmail(string $faculty, string $name)
+    /**
+     * Generate base email address based on the faculty's name.
+     */
+    private function generateBaseEmail(string $name): string
     {
-        $username = strtolower(implode('_', array_slice(explode(' ', $name), 1)));
-        $email = "{$username}@miit.edu.mm";
+        $cleanName = str_replace(['.', "'", 'Dr.', 'Daw', 'U'], '', $name);
+        $username = preg_replace('/\s+/', '_', strtolower(trim($cleanName)));
+        return "{$username}@miit.edu.mm";
+    }
+
+    /**
+     * Ensure email uniqueness with incremental suffix if needed.
+     */
+    private function makeUniqueEmail(string $baseEmail, array &$usedEmails): string
+    {
+        $email = $baseEmail;
+        $counter = 1;
+
+        while (in_array($email, $usedEmails)) {
+            $email = str_replace('@miit.edu.mm', "_{$counter}@miit.edu.mm", $baseEmail);
+            $counter++;
+        }
+
+        $usedEmails[] = $email;
         return $email;
     }
 

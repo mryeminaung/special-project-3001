@@ -9,7 +9,7 @@ class Faculty extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'gender', 'phone_number', 'email', 'rank_id', 'department_id'];
+    protected $fillable = ['name', 'gender', 'phone_number', 'email', 'rank_id', 'department_id', 'max_duties', 'current_duties', 'is_instructor_in_charge'];
 
     public function scopeFilter($query, $filter)
     {
@@ -38,5 +38,28 @@ class Faculty extends Model
     public function courses()
     {
         return $this->hasMany(Course::class);
+    }
+
+    public function examDuties()
+    {
+        return $this->hasMany(ExamDuty::class);
+    }
+
+    public function canInvigilate()
+    {
+        return in_array($this->rank->title, ['Professor', 'Associate Professor']);
+    }
+
+    public function canCoInvigilate()
+    {
+        return in_array($this->rank->title, ['Lecturer', 'Assistant Lecturer']);
+    }
+
+    public function getDailyAssignmentsAttribute()
+    {
+        return $this->examDuties()
+            ->get(['date', 'session'])
+            ->groupBy('date')
+            ->map(fn($day) => $day->pluck('session'));
     }
 }
