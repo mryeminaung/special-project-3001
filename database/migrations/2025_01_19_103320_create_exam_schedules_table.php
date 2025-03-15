@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->foreignId('room_id')->constrained()->cascadeOnDelete();
             $table->foreignId('program_id')->constrained()->cascadeOnDelete();
+            $table->unsignedInteger('no_students');
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@ class RoomSeeder extends Seeder
         ]);
 
         for ($roomNo = 200; $roomNo <= 220; $roomNo++) {
-            $roomName = 'Room ' . $roomNo;
+            $roomName = $roomNo;
 
             Room::create([
                 'name' => $roomName,
