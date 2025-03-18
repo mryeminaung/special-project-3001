@@ -47,10 +47,10 @@ export default function Register() {
                             alt=""
                             className="w-48"
                         />
-                        <h2 className="w-full text-3xl font-bold">
+                        <h2 className="font-poppins w-full text-3xl font-bold">
                             Hi, Welcome!
                         </h2>
-                        <p className="w-full text-gray-600 md:w-96">
+                        <p className="font-inter w-full text-gray-600 md:w-96">
                             Please sign up to use Exam Time-Table generator.
                             Provide your credentials below.
                         </p>
@@ -250,7 +250,7 @@ export default function Register() {
                                     <span className="text-gray-600">
                                         Already have an account?
                                     </span>
-                                    <p className="flex flex-col">
+                                    <p className="font-poppins flex flex-col">
                                         <Link
                                             href={route('sign-in')}
                                             className="font-semibold text-[#3B2C55]"

@@ -45,7 +45,7 @@ export default function LoginForm() {
                             className="absolute inset-0 h-full w-full rounded-r-3xl object-cover dark:brightness-[0.7]"
                         />
                     </div>
-                    <div className="flex flex-col gap-4 p-6 md:p-10 relative">
+                    <div className="relative flex flex-col gap-4 p-6 md:p-10">
                         <div className="flex flex-1 items-center justify-center">
                             <div className="w-full max-w-md">
                                 <div className="flex flex-col gap-6">
@@ -55,11 +55,11 @@ export default function LoginForm() {
                                             alt=""
                                             className="w-48"
                                         />
-                                        <h2 className="w-full text-3xl font-bold">
+                                        <h2 className="font-poppins w-full text-3xl font-bold">
                                             Welcome Back!
-                                            <ModeToggle className="absolute top-5 right-5"/>
+                                            <ModeToggle className="absolute right-5 top-5" />
                                         </h2>
-                                        <p className="w-full text-gray-700 dark:text-white md:w-96">
+                                        <p className="font-inter w-full text-gray-700 dark:text-white md:w-96">
                                             To use Exam Time-Table generator,
                                             <br />
                                             Please login in to your account with
@@ -132,7 +132,7 @@ export default function LoginForm() {
                                         </div>
                                         <Button
                                             type="submit"
-                                            className="w-full rounded-md bg-gradient-to-r from-[#6D5394] to-[#3B2C55] py-2 text-center font-semibold text-white hover:bg-[#4a3d70]"
+                                            className="font-poppins w-full rounded-md bg-gradient-to-r from-[#6D5394] to-[#3B2C55] py-2 text-center font-semibold text-white hover:bg-[#4a3d70]"
                                             disabled={processing}
                                         >
                                             Login

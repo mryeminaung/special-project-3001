@@ -39,7 +39,7 @@ export default function Index({
             <Head title="All Faculties" />
             <ScrollIndicator />
             <div className="mb-5 mt-10">
-                <h2 className="font-poppins text-2xl font-semibold hover:underline">
+                <h2 className="font-poppins text-2xl font-bold hover:underline">
                     <Link href="/faculties">
                         Total Faculties
                         <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">

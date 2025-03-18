@@ -24,7 +24,7 @@ export default function Index({ rooms, noOfTypeA, noOfTypeB }) {
                 <ScrollIndicator />
             </div>
             <div className="mb-5 mt-10">
-                <h2 className="font-poppins text-xl font-semibold hover:underline md:text-2xl">
+                <h2 className="font-poppins text-xl font-bold hover:underline md:text-2xl">
                     <Link href="/rooms">
                         Total Rooms
                         <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">

@@ -17,7 +17,7 @@ export default function Index({ departments, noOfDepartments }) {
         <AuthLayout>
             <Head title="All Departments" />
             <div className="mb-5 mt-10">
-                <h2 className="font-poppins text-2xl font-semibold">
+                <h2 className="font-poppins text-2xl font-bold">
                     Total Departments
                     <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
                         {noOfDepartments}

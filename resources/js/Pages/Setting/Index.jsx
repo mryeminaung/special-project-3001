@@ -22,7 +22,9 @@ export default function Index() {
             <div className="mt-12 rounded-2xl border border-white bg-white p-8 pt-10 shadow-md dark:bg-main-purple">
                 <div className="space-y-6">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-poppins text-2xl font-bold">My Profile</h1>
+                        <h1 className="font-poppins text-2xl font-bold">
+                            My Profile
+                        </h1>
                         <form
                             onSubmit={() => {
                                 post(route('logout'));
