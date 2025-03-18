@@ -57,7 +57,7 @@ export default function Index({ departments, noOfDepartments }) {
                     </TableCaption>
 
                     <TableHead>
-                        <tr className="border border-y-gray-200">
+                        <tr className="border border-y-gray-200 font-poppins">
                             <th scope="col" className="px-6 py-3">
                                 Name
                             </th>

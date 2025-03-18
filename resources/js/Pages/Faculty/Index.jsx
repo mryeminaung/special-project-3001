@@ -74,7 +74,7 @@ export default function Index({
             <TableWrapper>
                 <table className="w-full overflow-x-auto bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="font-poppins flex items-center">
+                        <div className="flex items-center font-poppins">
                             <span className="">Faculty Lists</span>
                             <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Faculty of Computer Science
@@ -97,7 +97,7 @@ export default function Index({
                     </TableCaption>
 
                     <TableHead>
-                        <tr className="border border-y-gray-200">
+                        <tr className="border border-y-gray-200 font-poppins">
                             <th scope="col" className="px-6 py-3">
                                 Name
                             </th>

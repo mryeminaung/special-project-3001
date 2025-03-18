@@ -45,7 +45,7 @@ export default function Index({
                 <div className="mt-5 grid w-full gap-x-4 gap-y-4 sm:grid-cols-2 md:grid-cols-2 md:gap-x-7 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-5">
                     <CourseCard
                         url="?program=cse and ece"
-                        name="CSE and ECE"
+                        name="CSE & ECE"
                         count={noOfBothCourses}
                     />
                     <CourseCard
@@ -62,9 +62,9 @@ export default function Index({
             </div>
 
             <TableWrapper>
-                <table className="w-full overflow-x-auto bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
+                <table className="w-full overflow-x-auto bg-white text-left font-inter text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="font-poppins flex items-center">
+                        <div className="flex items-center font-poppins">
                             <span className="">Course Lists</span>
                             <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Courses Information
@@ -87,7 +87,7 @@ export default function Index({
                     </TableCaption>
 
                     <TableHead>
-                        <tr>
+                        <tr className="font-poppins">
                             <th scope="col" className="px-6 py-3">
                                 Course Code
                             </th>

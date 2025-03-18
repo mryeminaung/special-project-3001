@@ -1,7 +1,6 @@
-import { MonitorCog, Moon, Sun } from 'lucide-react';
-
 import { useTheme } from '@/shadcn/theme-provider';
 import { Button } from '@/shadcn/ui/button';
+import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function ModeToggle({ className }) {
@@ -16,39 +15,45 @@ export default function ModeToggle({ className }) {
         <>
             {mounted && (
                 <div
-                    className={`flex space-x-2 rounded-full border border-gray-300 dark:text-white ${className}`}
+                    className={`flex space-x-1 rounded-full border border-gray-300 p-1 dark:border-gray-600 ${className}`}
                 >
                     <Button
                         variant="ghost"
                         size="icon"
-                        className={`rounded-full hover:bg-slate-400 hover:text-white ${
-                            theme == 'light' ? 'bg-slate-400' : ''
+                        className={`rounded-full transition-all duration-300 ease-in-out hover:bg-primary-purple hover:text-white ${
+                            theme === 'light'
+                                ? 'scale-110 bg-primary-purple text-white shadow-lg shadow-primary-purple/30'
+                                : 'text-gray-500 hover:text-white dark:text-gray-400'
                         }`}
                         onClick={() => setTheme('light')}
                     >
-                        <Sun className="h-[1.2rem] w-[1.2rem]" />
+                        <Sun className="h-[1.2rem] w-[1.2rem] transition-transform duration-300 ease-in-out hover:rotate-12" />
                         <span className="sr-only">Light</span>
                     </Button>
                     <Button
                         variant="ghost"
                         size="icon"
-                        className={`rounded-full hover:bg-slate-400 hover:text-white${
-                            theme == 'system' ? 'bg-slate-400' : ''
+                        className={`rounded-full transition-all duration-300 ease-in-out hover:bg-primary-purple hover:text-white ${
+                            theme === 'system'
+                                ? 'scale-110 bg-primary-purple text-white shadow-lg shadow-primary-purple/30'
+                                : 'text-gray-500 hover:text-white dark:text-gray-400'
                         }`}
                         onClick={() => setTheme('system')}
                     >
-                        <MonitorCog className="h-[1.2rem] w-[1.2rem]" />
+                        <MonitorCog className="h-[1.2rem] w-[1.2rem] transition-transform duration-300 ease-in-out hover:rotate-12" />
                         <span className="sr-only">System</span>
                     </Button>
                     <Button
                         variant="ghost"
                         size="icon"
-                        className={`rounded-full hover:bg-slate-400 hover:text-white${
-                            theme == 'dark' ? 'text-dark bg-slate-400' : ''
+                        className={`rounded-full transition-all duration-300 ease-in-out hover:bg-primary-purple hover:text-white ${
+                            theme === 'dark'
+                                ? 'scale-110 bg-primary-purple text-white shadow-lg shadow-primary-purple/30'
+                                : 'text-gray-500 hover:text-white dark:text-gray-400'
                         }`}
                         onClick={() => setTheme('dark')}
                     >
-                        <Moon className="h-[1.2rem] w-[1.2rem]" />
+                        <Moon className="h-[1.2rem] w-[1.2rem] transition-transform duration-300 ease-in-out hover:rotate-12" />
                         <span className="sr-only">Dark</span>
                     </Button>
                 </div>

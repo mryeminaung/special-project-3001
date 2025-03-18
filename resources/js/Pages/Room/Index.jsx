@@ -48,9 +48,9 @@ export default function Index({ rooms, noOfTypeA, noOfTypeB }) {
             </div>
 
             <TableWrapper>
-                <table className="font-inter w-full bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
+                <table className="w-full bg-white text-left font-inter text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="font-poppins flex items-center">
+                        <div className="flex items-center font-poppins">
                             <span className="">Room Lists</span>
                             <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Rooms Information
@@ -73,7 +73,7 @@ export default function Index({ rooms, noOfTypeA, noOfTypeB }) {
                     </TableCaption>
 
                     <TableHead>
-                        <tr className="">
+                        <tr className="font-poppins">
                             <th scope="col" className="px-6 py-3">
                                 Name
                             </th>

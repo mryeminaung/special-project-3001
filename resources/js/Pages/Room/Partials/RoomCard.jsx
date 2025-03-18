@@ -5,14 +5,26 @@ export default function RoomCard({ name, count, url }) {
     return (
         <Link
             href={url}
-            className="flex h-full w-full items-center justify-center gap-x-4 rounded-3xl border-2 border-primary-purple/70 bg-[#925FE2]/25 py-8 transition-transform hover:scale-105 dark:border-white/60"
+            className="block w-full rounded-3xl border-2 border-primary-purple/70 bg-[#925FE2]/25 p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-purple/50 dark:border-white/60"
         >
-            <div className="rounded-full bg-[#925FE2]/60 p-1 md:p-3 lg:block">
-                <img src={logo} alt="" className="lg:h-18 h-14 w-14 lg:w-16" />
-            </div>
-            <div className="font-poppins space-y-0">
-                <h2 className="text-md font-semibold lg:text-lg">{name}</h2>
-                <p className="text-xl font-bold lg:text-2xl">{count}</p>
+            <div className="flex items-center gap-4">
+                <div className="flex-shrink-0">
+                    <div className="rounded-full bg-[#925FE2]/60 p-2.5 transition-colors hover:bg-[#925FE2]/80">
+                        <img
+                            src={logo}
+                            alt={`${name} room logo`}
+                            className="h-12 w-12 object-contain md:h-14 lg:h-16 lg:w-16"
+                        />
+                    </div>
+                </div>
+                <div className="min-w-0 flex-1">
+                    <h2 className="text-md line-clamp-2 font-poppins font-semibold text-gray-900 dark:text-white lg:text-lg">
+                        {name}
+                    </h2>
+                    <p className="mt-1 font-poppins text-xl font-bold text-primary-purple dark:text-purple-200 lg:text-2xl">
+                        {count}
+                    </p>
+                </div>
             </div>
         </Link>
     );
