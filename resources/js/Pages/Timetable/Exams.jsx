@@ -18,10 +18,12 @@ export default function Exams({ exams }) {
                         />
                     </div>
                     <div className="space-y-2">
-                        <h2 className="text-xl font-semibold">
+                        <h2 className="font-poppins text-xl font-semibold">
                             Semester {semesterId}
                         </h2>
-                        <p className="text-3xl font-bold">{examList.length}</p>
+                        <p className="font-inter text-3xl font-bold">
+                            {examList.length}
+                        </p>
                     </div>
                 </Link>
             ))}

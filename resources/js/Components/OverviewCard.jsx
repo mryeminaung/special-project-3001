@@ -12,10 +12,10 @@ export default function OverviewCard({ path, icon, count, title }) {
                 className="h-14 w-16 md:h-16 md:w-16 lg:h-20 lg:w-20"
             />
             <div className="text-center">
-                <p className="text-xl font-semibold">
+                <p className="font-poppins text-xl font-semibold">
                     {count >= 100 ? count + ' +' : count}
                 </p>
-                <p className="text-lg text-gray-600 dark:text-white">
+                <p className="font-inter text-lg text-gray-600 dark:text-white">
                     Total {title}
                 </p>
             </div>

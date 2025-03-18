@@ -115,8 +115,10 @@ export default function ExamTimetable({ exams, semester }) {
                         {/* ... keep the existing table headers and caption ... */}
                         <TableCaption>
                             <div className="flex items-center">
-                                <span className="">Exam Timetable</span>
-                                <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
+                                <span className="font-poppins">
+                                    Exam Timetable
+                                </span>
+                                <span className="font-poppins ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                     {semester.name}
                                 </span>
                             </div>

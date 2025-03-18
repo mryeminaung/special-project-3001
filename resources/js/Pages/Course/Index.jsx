@@ -33,10 +33,10 @@ export default function Index({
             <Head title="All Courses" />
             <ScrollIndicator />
             <div className="mb-5 mt-9">
-                <h2 className="text-2xl font-semibold hover:underline">
+                <h2 className="font-poppins text-2xl font-semibold hover:underline">
                     <Link href="/courses">
                         Total Courses
-                        <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
+                        <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
                             {totalCourses}
                         </span>
                     </Link>
@@ -64,9 +64,9 @@ export default function Index({
             <TableWrapper>
                 <table className="w-full overflow-x-auto bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="flex items-center">
+                        <div className="font-poppins flex items-center">
                             <span className="">Course Lists</span>
-                            <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
+                            <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Courses Information
                             </span>
                         </div>

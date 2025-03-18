@@ -11,7 +11,7 @@ export default function SemesterDropdown({ selectedSemesterName, semesters }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button className="flex items-center justify-between max-w-max">
+                <Button className="flex max-w-max items-center justify-between">
                     {selectedSemesterName}
                     <svg
                         className="ms-3 h-2.5 w-2.5"

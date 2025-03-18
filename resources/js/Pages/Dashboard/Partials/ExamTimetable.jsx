@@ -6,10 +6,12 @@ export default function ExamTimetable() {
         <div className="mb-4 grid grid-cols-6 gap-8 rounded-3xl">
             <div className="col-span-4 h-48 rounded-3xl">
                 <div className="mb-3 flex justify-between font-semibold">
-                    <p className="mb-2 text-2xl font-bold">Exam Timetables</p>
+                    <p className="font-poppins mb-2 text-2xl font-bold">
+                        Exam Timetables
+                    </p>
                     <Link
                         href={route('timetables.index')}
-                        className="text-lg font-semibold text-[#925FE2]"
+                        className="font-poppins text-lg font-semibold text-[#925FE2]"
                     >
                         See all
                     </Link>

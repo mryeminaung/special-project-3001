@@ -24,10 +24,10 @@ export default function Index({ rooms, noOfTypeA, noOfTypeB }) {
                 <ScrollIndicator />
             </div>
             <div className="mb-5 mt-10">
-                <h2 className="text-xl font-semibold hover:underline md:text-2xl">
+                <h2 className="font-poppins text-xl font-semibold hover:underline md:text-2xl">
                     <Link href="/rooms">
                         Total Rooms
-                        <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
+                        <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
                             {noOfTypeA + noOfTypeB}
                         </span>
                     </Link>
@@ -48,11 +48,11 @@ export default function Index({ rooms, noOfTypeA, noOfTypeB }) {
             </div>
 
             <TableWrapper>
-                <table className="w-full bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
+                <table className="font-inter w-full bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="flex items-center">
+                        <div className="font-poppins flex items-center">
                             <span className="">Room Lists</span>
-                            <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
+                            <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Rooms Information
                             </span>
                         </div>

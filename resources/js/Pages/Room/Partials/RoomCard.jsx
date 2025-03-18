@@ -10,7 +10,7 @@ export default function RoomCard({ name, count, url }) {
             <div className="rounded-full bg-[#925FE2]/60 p-1 md:p-3 lg:block">
                 <img src={logo} alt="" className="lg:h-18 h-14 w-14 lg:w-16" />
             </div>
-            <div className="space-y-0">
+            <div className="font-poppins space-y-0">
                 <h2 className="text-md font-semibold lg:text-lg">{name}</h2>
                 <p className="text-xl font-bold lg:text-2xl">{count}</p>
             </div>
