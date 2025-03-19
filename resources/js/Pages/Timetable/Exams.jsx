@@ -17,11 +17,11 @@ export default function Exams({ exams }) {
                             className="h-12 w-12"
                         />
                     </div>
-                    <div className="space-y-2">
-                        <h2 className="font-poppins text-xl font-semibold">
+                    <div className="space-y-2 font-poppins">
+                        <h2 className="text-md line-clamp-2 font-semibold text-gray-900 dark:text-white lg:text-xl">
                             Semester {semesterId}
                         </h2>
-                        <p className="font-inter text-3xl font-bold">
+                        <p className="text-3xl font-bold text-primary-purple dark:text-purple-200 lg:text-3xl">
                             {examList.length}
                         </p>
                     </div>

@@ -52,18 +52,40 @@ export default function SiteHeader({ title }) {
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <div className="flex items-center gap-x-2 rounded-full border bg-white hover:cursor-pointer dark:border-soft-purple/50 md:pe-10">
+                        <div className="group relative flex items-center gap-x-3 rounded-full bg-white px-2 py-1.5 transition-all duration-300 hover:bg-gradient-to-r hover:from-white hover:to-purple-50 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:from-gray-800 dark:hover:to-purple-900/20">
                             <span className="sr-only">Open user menu</span>
-                            <img
-                                className="h-14 w-14 rounded-full"
-                                src={facultyImg}
-                                alt="Dr. Myat Thuzar Tun"
-                            />
-                            <div className="hidden flex-col items-start md:flex">
-                                <p className="text-black">{user.name}</p>
-                                <span className="text-black/60">
+                            <div className="relative">
+                                <img
+                                    className="h-11 w-11 rounded-full object-cover transition-all duration-300 group-hover:ring-2 group-hover:ring-primary-purple/20"
+                                    src={facultyImg}
+                                    alt={`Profile picture of ${user.name}`}
+                                />
+                                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-green-400 transition-all duration-300 group-hover:scale-110 dark:border-gray-800" />
+                            </div>
+
+                            <div className="hidden flex-col items-start pr-5 font-poppins md:flex">
+                                <p className="max-w-[150px] truncate text-sm font-medium text-primary-purple transition-colors duration-300 group-hover:text-purple-700 dark:text-purple-200 dark:group-hover:text-purple-100">
+                                    {user.name}
+                                </p>
+                                <span className="text-xs text-gray-500 transition-colors duration-300 group-hover:text-gray-600 dark:text-gray-400 dark:group-hover:text-gray-300">
                                     Pro-Rector
                                 </span>
+                            </div>
+
+                            <div className="hidden h-5 w-5 items-center justify-center md:flex">
+                                <svg
+                                    className="text-gray-400 transition-all duration-300 group-hover:rotate-180 group-hover:text-primary-purple dark:text-gray-500 dark:group-hover:text-purple-200"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
                             </div>
                         </div>
                     </DropdownMenuTrigger>

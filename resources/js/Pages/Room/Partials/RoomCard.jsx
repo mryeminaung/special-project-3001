@@ -18,7 +18,7 @@ export default function RoomCard({ name, count, url }) {
                     </div>
                 </div>
                 <div className="min-w-0 flex-1">
-                    <h2 className="text-md line-clamp-2 font-poppins font-semibold text-gray-900 dark:text-white lg:text-lg">
+                    <h2 className="text-md line-clamp-2 font-poppins font-semibold text-gray-900 dark:text-white lg:text-xl">
                         {name}
                     </h2>
                     <p className="mt-1 font-poppins text-xl font-bold text-primary-purple dark:text-purple-200 lg:text-2xl">

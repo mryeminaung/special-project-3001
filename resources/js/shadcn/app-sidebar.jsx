@@ -20,6 +20,7 @@ import {
 import { useEffect } from 'react';
 import SideBarLink from './sidebar-link';
 import miitLogo from '/public/assets/miit_logo.png';
+import miitLogoWordMark from '/public/assets/miit_logo_wordmark.png';
 
 const SideBarMenu = [
     {
@@ -91,7 +92,7 @@ export function AppSidebar({ ...props }) {
                 {open ? (
                     <Link href="/" className="rounded-2xl bg-white py-1">
                         <img
-                            src="https://lms.miit.edu.mm/pluginfile.php/1/core_admin/logo/0x200/1684573304/miit_logo_wordmark_small.png"
+                            src={miitLogoWordMark}
                             className="mx-auto h-16 transition-all"
                             alt="MIIT"
                         />

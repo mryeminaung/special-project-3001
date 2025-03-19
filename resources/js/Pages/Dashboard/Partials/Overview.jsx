@@ -34,13 +34,12 @@ export default function Overview({ noOfFaculty, noOfStudent, noOfCourse }) {
                     </h2>
                     <Link
                         href="#"
-                        className="font-poppins text-sm font-medium text-[#925FE2] transition-colors hover:text-[#925FE2]/80 focus:underline focus:outline-none dark:text-purple-300 dark:hover:text-purple-400"
+                        className="font-poppins font-medium text-[#925FE2] transition-colors hover:text-[#925FE2]/80 focus:underline focus:outline-none dark:text-purple-300 dark:hover:text-purple-400"
                     >
                         View More
                     </Link>
                 </header>
 
-                {/* Stats Cards */}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {stats.map((stat) => (
                         <Link

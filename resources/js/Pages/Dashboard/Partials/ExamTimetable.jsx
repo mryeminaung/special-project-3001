@@ -3,14 +3,14 @@ import { Link } from '@inertiajs/react';
 
 export default function ExamTimetable() {
     return (
-        <div className="rounded-3xl bg-white p-6 font-poppins shadow-lg">
-            <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-3xl font-bold text-gray-800">
+        <>
+            <div className="mb-2 flex items-center justify-between font-poppins">
+                <h2 className="text-2xl font-bold text-gray-800">
                     Exam Timetables
                 </h2>
                 <Link
                     href={route('timetables.index')}
-                    className="text-lg font-semibold text-purple-600 hover:underline"
+                    className="font-poppins font-medium text-[#925FE2] transition-colors hover:text-[#925FE2]/80 focus:underline focus:outline-none dark:text-purple-300 dark:hover:text-purple-400"
                 >
                     See all
                 </Link>
@@ -19,6 +19,6 @@ export default function ExamTimetable() {
                 <RoomCard name="Timetable 1" count={1} />
                 <RoomCard name="Timetable 2" count={2} />
             </div>
-        </div>
+        </>
     );
 }
