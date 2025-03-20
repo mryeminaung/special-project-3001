@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('rank_id')->constrained()->onDelete('cascade');
             $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->boolean('is_instructor_in_charge')->default(false);
-            $table->integer('max_duties')->default(5); // Maximum duties per faculty
-            $table->integer('current_duties')->default(0); // Current assigned duties
+            $table->unsignedInteger('current_duties')->default(0);
+            $table->unsignedInteger('max_duties')->default(8);
             $table->timestamps();
         });
     }

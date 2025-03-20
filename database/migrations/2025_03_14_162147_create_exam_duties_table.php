@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('exam_duties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('exam_schedule_id')->constrained()->onDelete('cascade');
-            $table->foreignId('faculty_id')->constrained()->onDelete('cascade');
+            $table->foreignId('faculty_id')->constrained()->onDelete('cascade')->after('id');
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->date('date');
             $table->enum('session', ['AM', 'PM']);

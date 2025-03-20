@@ -3,11 +3,13 @@
 namespace App\Services;
 
 use App\Models\{ExamSchedule, Faculty, Role, ExamDuty, Course};
+use Illuminate\Support\Facades\Log;
 
 class DutyAllocator
 {
     protected $date;
     protected $session;
+    protected $maxRetries = 3;
 
     public function __construct($date, $session)
     {
@@ -29,58 +31,74 @@ class DutyAllocator
         $required = 1;
         $role = Role::firstWhere('name', 'Invigilator');
 
-        $query = Faculty::whereHas('rank', fn($q) => $q->whereIn('title', ['Professor', 'Associate Professor']))
-            ->where('id', '!=', $course->faculty_id) // Exclude course instructor
-            ->whereColumn('current_duties', '<', 'max_duties')
-            ->whereDoesntHave('examDuties', fn($q) => $q->where([
-                ['date', $this->date],
-                ['session', $this->session]
-            ]));
+        $query = $this->baseFacultyQuery($course)
+            ->whereHas('rank', fn($q) => $q->whereIn('title', ['Associate Professor']))
+            ->orderBy('current_duties')
+            ->orderByRaw('RAND()');
 
-        if ($this->session === 'PM') {
-            $query->whereDoesntHave('examDuties', fn($q) => $q->where([
-                ['date', $this->date],
-                ['session', 'AM']
-            ]));
-        }
-
-        $faculty = $query->take($required)->get();
-        $this->createDuties($exam, $faculty, $role);
+        $this->assignDutiesWithFallback($exam, $query, $role, $required);
     }
 
     private function allocateCoInvigilators(ExamSchedule $exam, Course $course, $roomType)
     {
-        $required = $roomType === 1 ? 5 : 2; // Assuming 1=Type A, 2=Type B
+        $required = $roomType === 1 ? 5 : 2;
         $role = Role::firstWhere('name', 'Co-Invigilator');
 
-        $query = Faculty::whereHas('rank', fn($q) => $q->whereIn('title', ['Lecturer', 'Assistant Lecturer']))
-            ->where('id', '!=', $course->faculty_id) // Exclude course instructor
-            ->whereColumn('current_duties', '<', 'max_duties')
-            ->whereDoesntHave('examDuties', fn($q) => $q->where([
-                ['date', $this->date],
-                ['session', $this->session]
-            ]));
+        $query = $this->baseFacultyQuery($course)
+            ->whereHas('rank', fn($q) => $q->whereIn('title', ['Lecturer', 'Assistant Lecturer']))
+            ->orderBy('current_duties')
+            ->orderByRaw('RAND()');
 
-        if ($this->session === 'PM') {
-            $query->whereDoesntHave('examDuties', fn($q) => $q->where([
-                ['date', $this->date],
-                ['session', 'AM']
-            ]));
+        $this->assignDutiesWithFallback($exam, $query, $role, $required);
+    }
+
+    private function assignDutiesWithFallback($exam, $query, $role, $required, $attempt = 1)
+    {
+        $available = $query->take($required * 2)->get()->shuffle();
+
+        if ($available->count() >= $required) {
+            $this->createDuties($exam, $available->take($required), $role);
+            return;
         }
 
-        $faculty = $query->take($required)->get();
-        $this->createDuties($exam, $faculty, $role);
+        if ($attempt <= $this->maxRetries) {
+            // Relax constraints using raw expression with proper table prefix
+            $fallbackQuery = Faculty::whereRaw('faculties.current_duties < (faculties.max_duties + 2)')
+                ->orderBy('current_duties')
+                ->orderByRaw('RAND()');
+
+            $this->assignDutiesWithFallback($exam, $fallbackQuery, $role, $required, $attempt + 1);
+        } else {
+            Log::warning("Allocation failed after {$this->maxRetries} attempts for exam {$exam->id}");
+        }
+    }
+
+    private function baseFacultyQuery(Course $course)
+    {
+        return Faculty::where('id', '!=', $course->faculty_id)
+            ->whereColumn('current_duties', '<', 'max_duties')
+            ->whereDoesntHave('examDuties', function ($q) {
+                $q->where('date', $this->date)
+                    ->where('session', $this->session);
+            })
+            ->when($this->session === 'PM', function ($q) {
+                $q->whereDoesntHave('examDuties', function ($q) {
+                    $q->where('date', $this->date)
+                        ->where('session', 'AM');
+                });
+            });
     }
 
     private function createDuties($exam, $faculty, $role)
     {
         foreach ($faculty as $member) {
-            ExamDuty::create([
+            ExamDuty::firstOrCreate([
                 'exam_schedule_id' => $exam->id,
                 'faculty_id' => $member->id,
-                'role_id' => $role->id,
                 'date' => $this->date,
                 'session' => $this->session
+            ], [
+                'role_id' => $role->id
             ]);
 
             $member->increment('current_duties');
