@@ -27,7 +27,7 @@ class FacultySeeder extends Seeder
         $data = [];
         $usedEmails = []; // Track generated emails
 
-        for ($faculty = 1; $faculty <= 100; $faculty++) {
+        for ($faculty = 1; $faculty <= 60; $faculty++) {
             $isMale = $faculty % 2 == 0;
             $phoneNo = $this->generatePhoneNo();
             $name = $isMale
@@ -46,7 +46,7 @@ class FacultySeeder extends Seeder
                 'rank_id' => fake()->numberBetween(1, Rank::count()),
                 'department_id' => fake()->numberBetween(1, Department::count()),
                 'is_instructor_in_charge' => fake()->boolean(20),
-                'max_duties' => 5,
+                'max_duties' => 8,
                 'current_duties' => 0,
                 'created_at' => now(),
             ];
