@@ -1,7 +1,7 @@
 'use client';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
-import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import * as React from 'react';
 
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -258,14 +258,17 @@ const SidebarTrigger = React.forwardRef(
                 data-sidebar="trigger"
                 variant="ghost"
                 size="icon"
-                className={cn('mr-4 h-8 w-8 [&_svg]:size-10', className)}
+                className={cn(
+                    'mr-4 h-8 w-8 text-primary-purple hover:text-soft-purple [&_svg]:size-10',
+                    className,
+                )}
                 onClick={(event) => {
                     onClick?.(event);
                     toggleSidebar();
                 }}
                 {...props}
             >
-                {open ? <CircleChevronLeft /> : <CircleChevronRight />}
+                {open ? <ChevronLeft /> : <ChevronRight />}
 
                 <span className="sr-only">Toggle Sidebar</span>
             </Button>

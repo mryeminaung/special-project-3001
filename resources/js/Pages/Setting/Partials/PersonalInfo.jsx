@@ -7,7 +7,9 @@ export default function PersonalInfo() {
     return (
         <Card className="dark:bg-primary-purple/20">
             <CardHeader>
-                <h3 className="text-lg font-semibold">Personal Information</h3>
+                <h3 className="font-poppins text-lg font-semibold">
+                    Personal Information
+                </h3>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="space-y-2">

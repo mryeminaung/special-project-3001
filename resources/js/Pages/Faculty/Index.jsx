@@ -39,10 +39,10 @@ export default function Index({
             <Head title="All Faculties" />
             <ScrollIndicator />
             <div className="mb-5 mt-10">
-                <h2 className="text-2xl font-semibold hover:underline">
+                <h2 className="font-poppins text-2xl font-bold hover:underline">
                     <Link href="/faculties">
                         Total Faculties
-                        <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
+                        <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
                             {noOfFaculty}
                         </span>
                     </Link>
@@ -74,9 +74,9 @@ export default function Index({
             <TableWrapper>
                 <table className="w-full overflow-x-auto bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="flex items-center">
+                        <div className="flex items-center font-poppins">
                             <span className="">Faculty Lists</span>
-                            <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
+                            <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Faculty of Computer Science
                             </span>
                         </div>
@@ -97,7 +97,7 @@ export default function Index({
                     </TableCaption>
 
                     <TableHead>
-                        <tr className="border border-y-gray-200">
+                        <tr className="border border-y-gray-200 font-poppins">
                             <th scope="col" className="px-6 py-3">
                                 Name
                             </th>
@@ -158,7 +158,7 @@ export default function Index({
                                         faculty.courses.map((course) => (
                                             <Badge
                                                 key={course.id}
-                                                className="me-2 rounded-full bg-[#925FE2]/40 px-2.5 py-0.5 text-xs font-semibold text-[#3D2E58]"
+                                                className="me-2 rounded-full border border-[#925FE2] bg-[#925FE2]/40 px-2.5 py-0.5 text-xs font-semibold text-[#3D2E58]"
                                             >
                                                 {course.course_code}
                                             </Badge>

@@ -29,7 +29,7 @@ export default function NewTimetable({ semesters, courses, examPeriods }) {
             {/* {semesterIdFromUrl != 0 && <ScrollIndicator />} */}
             <div className="mt-12 rounded-xl border border-white bg-white px-5 py-5 shadow-md dark:bg-main-purple">
                 <div className="flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
-                    <p className="text-xl font-bold hover:underline">
+                    <p className="font-poppins text-xl font-bold hover:underline">
                         <Link href="/new-timetable">Create Exam Schedule</Link>
                     </p>
                     <SemesterDropdown

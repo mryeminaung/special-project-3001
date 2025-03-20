@@ -111,12 +111,13 @@ export default function ExamTimetable({ exams, semester }) {
                 )}
 
                 <TableWrapper>
-                    <table className="w-full overflow-x-auto bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
-                        {/* ... keep the existing table headers and caption ... */}
+                    <table className="w-full overflow-x-auto bg-white text-left font-inter text-sm dark:text-gray-400 rtl:text-right">
                         <TableCaption>
                             <div className="flex items-center">
-                                <span className="">Exam Timetable</span>
-                                <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
+                                <span className="font-poppins">
+                                    Exam Timetable
+                                </span>
+                                <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 font-poppins text-xs font-medium text-blue-800">
                                     {semester.name}
                                 </span>
                             </div>
@@ -131,7 +132,7 @@ export default function ExamTimetable({ exams, semester }) {
                         </TableCaption>
 
                         <TableHead>
-                            <tr>
+                            <tr className="font-poppins">
                                 <th scope="col" className="hidden px-6 py-3">
                                     Batch
                                 </th>
@@ -158,7 +159,7 @@ export default function ExamTimetable({ exams, semester }) {
                                     Program
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Invigilation Team
+                                    Invigilators
                                 </th>
                             </tr>
                         </TableHead>

@@ -37,10 +37,10 @@ export default function Index({ students, noOfStudent }) {
             <Head title="All Students" />
             <ScrollIndicator />
             <div className="mb-5 mt-10">
-                <h2 className="text-2xl font-semibold hover:underline">
+                <h2 className="font-poppins text-2xl font-bold hover:underline">
                     <Link href="/students">
                         Total Students
-                        <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
+                        <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
                             {noOfStudent}
                         </span>
                     </Link>
@@ -54,11 +54,11 @@ export default function Index({ students, noOfStudent }) {
             </div>
 
             <TableWrapper>
-                <table className="w-full overflow-x-auto bg-white text-sm dark:text-gray-400 rtl:text-right">
+                <table className="w-full overflow-x-auto bg-white font-inter text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="flex items-center">
+                        <div className="flex items-center font-poppins">
                             <span className="">Student Lists</span>
-                            <span className="ms-2 rounded-full bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
+                            <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 For Academic Years
                             </span>
                         </div>
@@ -79,7 +79,7 @@ export default function Index({ students, noOfStudent }) {
                     </TableCaption>
 
                     <TableHead>
-                        <tr className="border border-y-gray-200 text-left">
+                        <tr className="border border-y-gray-200 text-left font-poppins">
                             <th scope="col" className="py-3 ps-5 md:px-6">
                                 Name
                             </th>

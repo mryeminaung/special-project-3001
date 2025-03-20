@@ -11,7 +11,10 @@ import { Dot, Eye } from 'lucide-react';
 export default function StudentModal({ student }) {
     return (
         <Dialog>
-            <DialogTrigger className="inline-block hover:cursor-pointer xl:hidden" asChild>
+            <DialogTrigger
+                className="inline-block hover:cursor-pointer xl:hidden"
+                asChild
+            >
                 <Eye className="text-green-500" />
             </DialogTrigger>
             <DialogContent className="rounded-lg p-5 shadow-md dark:bg-main-purple dark:text-white">
@@ -57,7 +60,7 @@ export default function StudentModal({ student }) {
                     </Badge>
                 </div>
                 <div>
-                    <p className="text-sm font-semibold mb-2 text-gray-500 dark:text-gray-400">
+                    <p className="mb-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
                         Enrolled Courses
                     </p>
                     {student.courses.length > 0 ? (

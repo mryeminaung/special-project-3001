@@ -3,22 +3,22 @@ import { Link } from '@inertiajs/react';
 
 export default function ExamTimetable() {
     return (
-        <div className="mb-4 grid grid-cols-6 gap-8 rounded-3xl">
-            <div className="col-span-4 h-48 rounded-3xl">
-                <div className="mb-3 flex justify-between font-semibold">
-                    <p className="mb-2 text-2xl font-bold">Exam Timetables</p>
-                    <Link
-                        href={route('timetables.index')}
-                        className="text-lg font-semibold text-[#925FE2]"
-                    >
-                        See all
-                    </Link>
-                </div>
-                <div className="mt-5 grid grid-cols-2 items-center gap-x-4 gap-y-3 2xl:grid-cols-3">
-                    <RoomCard name="Timetable 1" count={1} />
-                    <RoomCard name="Timetable 2" count={2} />
-                </div>
+        <>
+            <div className="mb-2 flex items-center justify-between font-poppins">
+                <h2 className="font-poppins text-2xl font-bold text-gray-900 dark:text-white">
+                    Exam Timetables
+                </h2>
+                <Link
+                    href={route('timetables.index')}
+                    className="font-poppins font-medium text-[#925FE2] transition-colors hover:text-[#925FE2]/80 focus:underline focus:outline-none dark:text-purple-300 dark:hover:text-purple-400"
+                >
+                    See all
+                </Link>
             </div>
-        </div>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <RoomCard name="Timetable 1" count={1} />
+                <RoomCard name="Timetable 2" count={2} />
+            </div>
+        </>
     );
 }
