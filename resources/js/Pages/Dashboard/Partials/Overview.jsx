@@ -7,21 +7,21 @@ export default function Overview({ noOfFaculty, noOfStudent, noOfCourse }) {
             count: noOfFaculty,
             path: route('faculties.index'),
             icon: '/assets/dashboard/overview-faculty.svg',
-            bgColor: 'bg-gradient-to-br from-blue-500 to-blue-700',
+            bgColor: 'bg-gradient-to-l from-[#6D5394] to-[#3B2C55]',
         },
         {
             title: 'Students',
             count: noOfStudent,
             path: route('students.index'),
             icon: '/assets/dashboard/overview-student.svg',
-            bgColor: 'bg-gradient-to-br from-teal-500 to-teal-700',
+            bgColor: 'bg-gradient-to-l from-[#6D5394] to-[#3B2C55]',
         },
         {
             title: 'Courses',
             count: noOfCourse,
             path: route('courses.index'),
             icon: '/assets/dashboard/overview-course.svg',
-            bgColor: 'bg-gradient-to-br from-[#925FE2] to-[#7A4DC2]',
+            bgColor: 'bg-gradient-to-l from-[#6D5394] to-[#3B2C55]',
         },
     ];
 

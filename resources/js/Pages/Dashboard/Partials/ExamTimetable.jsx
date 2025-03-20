@@ -5,7 +5,7 @@ export default function ExamTimetable() {
     return (
         <>
             <div className="mb-2 flex items-center justify-between font-poppins">
-                <h2 className="text-2xl font-bold text-gray-800">
+                <h2 className="font-poppins text-2xl font-bold text-gray-900 dark:text-white">
                     Exam Timetables
                 </h2>
                 <Link

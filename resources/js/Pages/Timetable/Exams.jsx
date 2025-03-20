@@ -8,7 +8,7 @@ export default function Exams({ exams }) {
                 <Link
                     key={semesterId}
                     href={route('timetables.show', semesterId)}
-                    className="flex h-full min-w-96 items-center justify-center gap-x-8 rounded-3xl border-4 border-primary-purple/70 bg-[#925FE2]/25 py-8"
+                    className="flex h-full min-w-80 items-center justify-center gap-x-8 rounded-3xl border-4 border-soft-purple/70 bg-[#925FE2]/25 py-8"
                 >
                     <div className="rounded-full bg-[#925FE2]/60 p-3">
                         <img

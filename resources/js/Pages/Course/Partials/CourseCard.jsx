@@ -5,7 +5,7 @@ export default function CourseCard({ name, count, url }) {
     return (
         <Link
             href={url}
-            className="block w-full max-w-xs rounded-3xl border-2 border-primary-purple/50 bg-[#925FE2]/25 p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-purple/50 dark:border-white/80 dark:bg-[#925FE2]/20"
+            className="block w-full max-w-xs rounded-3xl border-4 border-soft-purple/70 bg-[#925FE2]/25 p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-purple/50 dark:border-white/80 dark:bg-[#925FE2]/20"
         >
             <div className="flex items-center gap-4">
                 <div className="flex-shrink-0">

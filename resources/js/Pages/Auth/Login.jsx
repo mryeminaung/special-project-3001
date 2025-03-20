@@ -8,7 +8,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import { Lock, Mail } from 'lucide-react';
 import mainBg from '/public/assets/academic-bg.jpg';
 import bgImage from '/public/assets/bg.jpg';
-
+import miitLogoWordMark from '/public/assets/miit_logo_wordmark.png';
 export default function LoginForm() {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -55,11 +55,11 @@ export default function LoginForm() {
                                     {/* Header Section */}
                                     <div className="flex flex-col items-start gap-2 text-left dark:text-white">
                                         <img
-                                            src="https://lms.miit.edu.mm/pluginfile.php/1/core_admin/logo/0x200/1684573304/miit_logo_wordmark_small.png"
+                                            src={miitLogoWordMark}
                                             alt="MIIT Logo"
                                             className="w-48"
                                         />
-                                        <h2 className="w-full font-poppins text-3xl font-bold">
+                                        <h2 className="w-full font-poppins text-4xl font-bold text-primary-purple dark:text-purple-100">
                                             Welcome Back!
                                             <ModeToggle className="absolute right-5 top-5" />
                                         </h2>

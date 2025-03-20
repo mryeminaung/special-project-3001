@@ -3,6 +3,7 @@ import mainBg from '/public/assets/academic-bg.jpg';
 import bgImage from '/public/assets/bg.jpg';
 import lineStroke from '/public/assets/line-stroke.png';
 import GuestLayout from '@/Layouts/GuestLayout';
+import miitLogoWordMark from '/public/assets/miit_logo_wordmark.png';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -43,14 +44,14 @@ export default function Register() {
                 <div className="mx-auto min-h-screen pt-28 lg:w-auto 2xl:w-full 2xl:px-20 2xl:pe-80">
                     <div className="h-full w-auto space-y-4 rounded-2xl px-10">
                         <img
-                            src="https://lms.miit.edu.mm/pluginfile.php/1/core_admin/logo/0x200/1684573304/miit_logo_wordmark_small.png"
+                            src={miitLogoWordMark}
                             alt=""
                             className="w-48"
                         />
-                        <h2 className="font-poppins w-full text-3xl font-bold">
+                        <h2 className="w-full font-poppins text-4xl font-bold text-primary-purple dark:text-purple-100">
                             Hi, Welcome!
                         </h2>
-                        <p className="font-inter w-full text-gray-600 md:w-96">
+                        <p className="w-full font-inter text-gray-600 md:w-96">
                             Please sign up to use Exam Time-Table generator.
                             Provide your credentials below.
                         </p>
@@ -250,7 +251,7 @@ export default function Register() {
                                     <span className="text-gray-600">
                                         Already have an account?
                                     </span>
-                                    <p className="font-poppins flex flex-col">
+                                    <p className="flex flex-col font-poppins">
                                         <Link
                                             href={route('sign-in')}
                                             className="font-semibold text-[#3B2C55]"
