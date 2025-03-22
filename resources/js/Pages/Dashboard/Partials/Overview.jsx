@@ -34,7 +34,7 @@ export default function Overview({ noOfFaculty, noOfStudent, noOfCourse }) {
                     </h2>
                     <Link
                         href="#"
-                        className="font-poppins font-medium text-[#925FE2] transition-colors hover:text-[#925FE2]/80 focus:underline focus:outline-none dark:text-purple-300 dark:hover:text-purple-400"
+                        className="font-poppins font-medium text-[#925FE2] transition-colors hover:text-[#925FE2]/80 hover:underline focus:underline focus:outline-none dark:text-purple-300 dark:hover:text-purple-400"
                     >
                         View More
                     </Link>

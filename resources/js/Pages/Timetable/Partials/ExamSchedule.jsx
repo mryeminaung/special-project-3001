@@ -60,7 +60,6 @@ export default function ExamSchedule({ courses, semesterIdFromUrl }) {
             ...course,
         }));
 
-        console.table(mergedData);
         router.post(route('timetables.store'), mergedData, {
             preserveState: true,
         });

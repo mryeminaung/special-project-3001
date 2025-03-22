@@ -12,6 +12,8 @@ export default function Index({
     noOfFaculty,
     noOfStudent,
     noOfCourse,
+    exams,
+    courseInfo,
 }) {
     return (
         <AuthLayout>
@@ -26,7 +28,7 @@ export default function Index({
                 noOfFaculty={noOfFaculty}
             />
 
-            <ExamTimetable />
+            <ExamTimetable exams={exams} courseInfo={courseInfo} />
         </AuthLayout>
     );
 }

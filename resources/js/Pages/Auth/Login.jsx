@@ -6,9 +6,11 @@ import { Input } from '@/shadcn/ui/input';
 import { Label } from '@/shadcn/ui/label';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { Lock, Mail } from 'lucide-react';
-import mainBg from '/public/assets/academic-bg.jpg';
+
 import bgImage from '/public/assets/bg.jpg';
+import loginBg from '/public/assets/loginBg.jpg';
 import miitLogoWordMark from '/public/assets/miit_logo_wordmark.png';
+
 export default function LoginForm() {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -41,9 +43,9 @@ export default function LoginForm() {
                     {/* Left Side: Background Image */}
                     <div className="relative hidden lg:block">
                         <img
-                            src={mainBg}
+                            src={loginBg}
                             alt="Academic Background"
-                            className="absolute inset-0 h-full w-full rounded-r-3xl object-cover dark:brightness-[0.7]"
+                            className="absolute inset-0 h-full w-full rounded-r-2xl object-cover"
                         />
                     </div>
 
@@ -54,11 +56,16 @@ export default function LoginForm() {
                                 <div className="flex flex-col gap-6">
                                     {/* Header Section */}
                                     <div className="flex flex-col items-start gap-2 text-left dark:text-white">
-                                        <img
-                                            src={miitLogoWordMark}
-                                            alt="MIIT Logo"
-                                            className="w-48"
-                                        />
+                                        <Link
+                                            href="/"
+                                            className="rounded-2xl px-5 py-1 dark:bg-white"
+                                        >
+                                            <img
+                                                src={miitLogoWordMark}
+                                                className="mx-auto h-16 transition-all"
+                                                alt="MIIT"
+                                            />
+                                        </Link>
                                         <h2 className="w-full font-poppins text-4xl font-bold text-primary-purple dark:text-purple-100">
                                             Welcome Back!
                                             <ModeToggle className="absolute right-5 top-5" />
