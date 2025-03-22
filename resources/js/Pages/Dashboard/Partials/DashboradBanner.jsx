@@ -8,7 +8,7 @@ export default function DashboradBanner({ currentDate }) {
 
     return (
         <div className="mt-6 grid grid-cols-1 items-center rounded-3xl bg-gradient-to-l from-[#6D5394] to-[#3B2C55] p-8 pb-10 pt-10 text-white lg:grid-cols-3 lg:pe-10 lg:ps-10">
-            <div className="col-span-2 space-y-12">
+            <div className="col-span-2 space-y-10">
                 <p className="font-poppins font-medium">{currentDate}</p>
                 <div className="space-y-5">
                     <h2 className="font-poppins text-2xl font-semibold md:text-3xl lg:text-4xl">

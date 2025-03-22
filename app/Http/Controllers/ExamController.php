@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Course;
@@ -11,8 +10,8 @@ use App\Models\RoomUsage;
 use App\Models\Semester;
 use App\Services\DutyAllocator;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class ExamController extends Controller
 {
@@ -21,8 +20,19 @@ class ExamController extends Controller
         $exams = ExamSchedule::whereIn('semester_id', [1, 3, 5, 7])
             ->get()
             ->groupBy('semester_id');
+
+        // Convert collection keys to an array
+        $semesterIds = $exams->keys()->toArray();
+
+        // Fetch course counts for each semester
+        $courseInfo = Course::whereIn('semester_id', $semesterIds)
+            ->selectRaw('semester_id, COUNT(*) as course_count')
+            ->groupBy('semester_id')
+            ->pluck('course_count', 'semester_id');
+
         return Inertia::render('Timetable/Index', [
-            'exams' => $exams,
+            'exams'      => $exams,
+            'courseInfo' => $courseInfo,
         ]);
     }
 
@@ -33,12 +43,14 @@ class ExamController extends Controller
             ->with(['program', 'courseType'])
             ->get();
         $examPeriods = ExamPeriod::all();
-        $semesters = Semester::wherein('id', [1, 3, 5, 7])->get();
+        $semesters   = Semester::wherein('id', [1, 3, 5, 7])->get();
+        $semesterIds = ExamSchedule::select('semester_id')->distinct()->pluck('semester_id');
 
         return Inertia::render('Timetable/NewTimetable', [
-            'semesters' => $semesters,
-            'courses' => $courses,
+            'semesters'   => $semesters,
+            'courses'     => $courses,
             'examPeriods' => $examPeriods,
+            'semesterIds' => $semesterIds,
         ]);
     }
 
@@ -52,8 +64,8 @@ class ExamController extends Controller
 
         foreach ($exams as $exam) {
             $numberOfStudents = $exam['no_students'];
-            $examDate = $exam['exam_date'];
-            $examTimeId = $exam['exam_time_id'];
+            $examDate         = $exam['exam_date'];
+            $examTimeId       = $exam['exam_time_id'];
 
             // Get rooms already in use for this time slot
             $usedRooms = RoomUsage::where('date', $examDate)
@@ -62,9 +74,9 @@ class ExamController extends Controller
                 ->toArray();
 
             // Calculate required rooms
-            $RA = intdiv($numberOfStudents, 60);
+            $RA        = intdiv($numberOfStudents, 60);
             $remainder = $numberOfStudents % 60;
-            $RB = ceil($remainder / 30);
+            $RB        = ceil($remainder / 30);
 
             // Allocate Type A rooms
             $typeARooms = Room::where('room_type_id', $roomTypeA->id)
@@ -74,7 +86,7 @@ class ExamController extends Controller
 
             // Calculate missing Type A capacity
             $allocatedTypeA = $typeARooms->count();
-            $missingTypeA = $RA - $allocatedTypeA;
+            $missingTypeA   = $RA - $allocatedTypeA;
 
             // Convert missing Type A to Type B (1 Type A = 2 Type B)
             if ($missingTypeA > 0) {
@@ -94,28 +106,28 @@ class ExamController extends Controller
             if ($allocatedRooms->count() < ($allocatedTypeA + $RB)) {
                 $timeSlot = ExamPeriod::find($examTimeId)->type;
                 return Redirect::back()->withErrors([
-                    'error' => "Not enough rooms available for {$exam['course_code']} on {$examDate} ({$timeSlot})"
+                    'error' => "Not enough rooms available for {$exam['course_code']} on {$examDate} ({$timeSlot})",
                 ]);
             }
 
             // Create exam schedules
             foreach ($allocatedRooms as $room) {
                 $schedule = ExamSchedule::create([
-                    'semester_id' => $exam['semester_id'],
-                    'course_id' => $exam['course_id'],
-                    'exam_date' => $examDate,
+                    'semester_id'  => $exam['semester_id'],
+                    'course_id'    => $exam['course_id'],
+                    'exam_date'    => $examDate,
                     'exam_time_id' => $examTimeId,
-                    'room_id' => $room->id,
-                    'program_id' => $exam['program_id'],
-                    'no_students' => $numberOfStudents
+                    'room_id'      => $room->id,
+                    'program_id'   => $exam['program_id'],
+                    'no_students'  => $numberOfStudents,
                 ]);
 
                 // Mark room as used with time slot
                 RoomUsage::create([
-                    'date' => $examDate,
-                    'exam_time_id' => $examTimeId,
-                    'room_id' => $room->id,
-                    'exam_schedule_id' => $schedule->id
+                    'date'             => $examDate,
+                    'exam_time_id'     => $examTimeId,
+                    'room_id'          => $room->id,
+                    'exam_schedule_id' => $schedule->id,
                 ]);
 
                 // Duty Allocation Here
@@ -146,25 +158,25 @@ class ExamController extends Controller
             $firstExam = $group->first();
 
             return [
-                'id' => $firstExam->id,
-                'course_code' => $firstExam->course->course_code,
-                'title' => $firstExam->course->title,
-                'exam_date' => $firstExam->exam_date,
+                'id'           => $firstExam->id,
+                'course_code'  => $firstExam->course->course_code,
+                'title'        => $firstExam->course->title,
+                'exam_date'    => $firstExam->exam_date,
                 'exam_time_id' => $firstExam->exam_time_id,
-                'exam_duties' => $group->flatMap(function ($exam) {
+                'exam_duties'  => $group->flatMap(function ($exam) {
                     return $exam->examDuties->map(fn($duty) => [
-                        ...$duty->toArray(),
-                        'room_number' => $exam->room->name
+                         ...$duty->toArray(),
+                        'room_number' => $exam->room->name,
                     ]);
                 }),
-                'program' => $firstExam->course->program,
-                'rooms' => $group->pluck('room.name')->all(), // Array of room numbers
-                'no_students' => $firstExam->no_students,
+                'program'      => $firstExam->course->program,
+                'rooms'        => $group->pluck('room.name')->all(), // Array of room numbers
+                'no_students'  => $firstExam->no_students,
             ];
         })->values();
 
         return Inertia::render('Timetable/Partials/ExamTimetable', [
-            'exams' => $mergedData,
+            'exams'    => $mergedData,
             'semester' => $semester,
         ]);
     }

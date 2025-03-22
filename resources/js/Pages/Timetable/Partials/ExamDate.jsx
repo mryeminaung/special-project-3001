@@ -32,6 +32,7 @@ export default function ExamDate({
                                 Exam Start Date
                             </Label>
                             <Input
+                                id="first_name"
                                 value={examData.exam_date}
                                 onChange={handleExamDataChange}
                                 type="date"
@@ -52,6 +53,7 @@ export default function ExamDate({
                             <Input
                                 type="date"
                                 name="exam_date"
+                                id="last_name"
                                 onChange={handleExamDataChange}
                                 value={calculateEndDate()}
                                 disabled
@@ -76,6 +78,7 @@ export default function ExamDate({
                                 <SelectTrigger className="dark:border-white">
                                     <SelectValue placeholder="Select exam time" />
                                 </SelectTrigger>
+
                                 <SelectContent className="dark:border-white dark:bg-main-purple">
                                     <SelectItem
                                         className="hover:cursor-pointer"
