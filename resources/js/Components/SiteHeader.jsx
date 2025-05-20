@@ -3,7 +3,6 @@ import { SidebarTrigger } from '@/shadcn/ui/sidebar';
 import { Link, usePage } from '@inertiajs/react';
 import facultyImg from '/public/assets/admin2.jpg';
 
-import ModeToggle from '@/shadcn/mode-toggle';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -16,7 +15,6 @@ import { useEffect, useState } from 'react';
 
 export default function SiteHeader({ title }) {
     const {
-        url,
         auth: { user },
     } = usePage().props;
     const [isBlurred, setIsBlurred] = useState(false);
@@ -45,14 +43,17 @@ export default function SiteHeader({ title }) {
         >
             <div className="flex w-full items-center justify-between gap-2 px-4 pb-4 pt-6">
                 <div className="flex items-center">
-                    <SidebarTrigger className="-ml-1 hover:bg-none dark:text-white" />
-                    <ModeToggle />
+                    <SidebarTrigger className="-ml-1 rounded-full bg-primary-purple text-white dark:bg-white dark:text-primary-purple" />
+                    <h2 className="font-poppins text-3xl font-bold capitalize text-gray-900 dark:text-white">
+                        Dashboard
+                    </h2>
+                    {/* <ModeToggle /> */}
                     <Separator orientation="vertical" className="mr-2 h-4" />
                     <h2 className="text-2xl font-semibold">{title}</h2>
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <div className="group relative flex items-center gap-x-3 rounded-full bg-white px-2 py-1.5 transition-all duration-300 hover:bg-gradient-to-r hover:from-white hover:to-purple-50 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:from-gray-800 dark:hover:to-purple-900/20">
+                        <div className="group relative flex items-center gap-x-3 rounded-full bg-white px-2 py-1.5 transition-all duration-200 hover:bg-gradient-to-r hover:from-white hover:to-purple-50 hover:shadow-lg dark:border-gray-700 dark:bg-main-purple dark:hover:from-gray-800 dark:hover:to-purple-900/20">
                             <span className="sr-only">Open user menu</span>
                             <div className="relative">
                                 <img

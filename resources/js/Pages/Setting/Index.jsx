@@ -45,7 +45,7 @@ export default function Index() {
                     <div className="flex flex-col gap-y-5 md:gap-x-5 lg:flex-row">
                         <Card className="bg-platinum/50 dark:bg-primary-purple/20 lg:max-h-fit lg:w-2/5">
                             <CardContent className="p-6">
-                                <div className="font-poppins flex flex-col items-center gap-6 sm:flex-row lg:flex-col">
+                                <div className="flex flex-col items-center gap-6 font-poppins sm:flex-row lg:flex-col">
                                     <div className="relative">
                                         <Avatar className="h-24 w-24">
                                             <AvatarImage
@@ -81,7 +81,7 @@ export default function Index() {
                         </Card>
 
                         <Tabs defaultValue="personal" className="w-full">
-                            <TabsList className="font-inter flex w-full flex-col gap-y-2 sm:grid sm:grid-cols-3 sm:gap-0">
+                            <TabsList className="flex w-full flex-col gap-y-2 font-inter sm:grid sm:grid-cols-3 sm:gap-0">
                                 <TabsTrigger
                                     value="personal"
                                     className="flex w-full items-center justify-start sm:justify-center"

@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 import ExamSchedule from './Partials/ExamSchedule';
 import SemesterDropdown from './Partials/SemesterDropdown';
 
-export default function NewTimetable({ semesters, courses, examPeriods }) {
+export default function NewTimetable({
+    semesters,
+    courses,
+    examPeriods,
+    semesterIds,
+}) {
     const urlParams = new URLSearchParams(window.location.search);
     const semesterIdFromUrl = urlParams.get('semester_id') || 0;
 

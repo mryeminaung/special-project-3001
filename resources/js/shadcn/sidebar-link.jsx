@@ -3,7 +3,7 @@ import { Link, usePage } from '@inertiajs/react';
 
 export default function SideBarLink({ routeLink, icon, routeName }) {
     const { url } = usePage();
-    const { open, isMobile, setOpen } = useSidebar();
+    const { open } = useSidebar();
 
     const isActive = url.startsWith('/' + routeName.toLowerCase());
 

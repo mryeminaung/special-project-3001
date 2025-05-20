@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Course;
@@ -23,8 +22,19 @@ class ExamController extends Controller
         $exams = ExamSchedule::whereIn('semester_id', [1, 3, 5, 7])
             ->get()
             ->groupBy('semester_id');
+
+        // Convert collection keys to an array
+        $semesterIds = $exams->keys()->toArray();
+
+        // Fetch course counts for each semester
+        $courseInfo = Course::whereIn('semester_id', $semesterIds)
+            ->selectRaw('semester_id, COUNT(*) as course_count')
+            ->groupBy('semester_id')
+            ->pluck('course_count', 'semester_id');
+
         return Inertia::render('Timetable/Index', [
-            'exams' => $exams,
+            'exams'      => $exams,
+            'courseInfo' => $courseInfo,
         ]);
     }
 
@@ -43,8 +53,8 @@ class ExamController extends Controller
             ->get();
 
         return Inertia::render('Timetable/NewTimetable', [
-            'semesters' => $semesters,
-            'courses' => $courses,
+            'semesters'   => $semesters,
+            'courses'     => $courses,
             'examPeriods' => $examPeriods,
         ]);
     }
@@ -188,25 +198,25 @@ class ExamController extends Controller
             $firstExam = $group->first();
 
             return [
-                'id' => $firstExam->id,
-                'course_code' => $firstExam->course->course_code,
-                'title' => $firstExam->course->title,
-                'exam_date' => $firstExam->exam_date,
+                'id'           => $firstExam->id,
+                'course_code'  => $firstExam->course->course_code,
+                'title'        => $firstExam->course->title,
+                'exam_date'    => $firstExam->exam_date,
                 'exam_time_id' => $firstExam->exam_time_id,
-                'exam_duties' => $group->flatMap(function ($exam) {
+                'exam_duties'  => $group->flatMap(function ($exam) {
                     return $exam->examDuties->map(fn($duty) => [
-                        ...$duty->toArray(),
-                        'room_number' => $exam->room->name
+                         ...$duty->toArray(),
+                        'room_number' => $exam->room->name,
                     ]);
                 }),
-                'program' => $firstExam->course->program,
-                'rooms' => $group->pluck('room.name')->all(), // Array of room numbers
-                'no_students' => $firstExam->no_students,
+                'program'      => $firstExam->course->program,
+                'rooms'        => $group->pluck('room.name')->all(), // Array of room numbers
+                'no_students'  => $firstExam->no_students,
             ];
         })->values();
 
         return Inertia::render('Timetable/Partials/ExamTimetable', [
-            'exams' => $mergedData,
+            'exams'    => $mergedData,
             'semester' => $semester,
         ]);
     }

@@ -15,6 +15,7 @@ import {
     Grid2x2,
     Layers,
     LayoutDashboard,
+    NotebookTabs,
     Settings,
     Users,
 } from 'lucide-react';
@@ -72,8 +73,7 @@ const SideBarMenu = [
 ];
 
 export function AppSidebar({ ...props }) {
-    const { open, state, isMobile, openMobile, setOpen, setOpenMobile } =
-        useSidebar();
+    const { open, state, isMobile, setOpen } = useSidebar();
 
     useEffect(() => {
         localStorage.setItem('sidebarState', 'expanded');
@@ -129,7 +129,7 @@ export function AppSidebar({ ...props }) {
                     </li>
 
                     {SideBarMenu.map((menu) => (
-                        <SidebarMenuButton asChild key={menu.routeLink}>
+                        <SidebarMenuButton asChild key={menu.routeName}>
                             <SideBarLink {...menu} />
                         </SidebarMenuButton>
                     ))}
