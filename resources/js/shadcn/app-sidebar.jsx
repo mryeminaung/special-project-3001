@@ -8,6 +8,7 @@ import {
 import { Link } from '@inertiajs/react';
 import {
     BookOpenText,
+    BookUser,
     CirclePlus,
     Clock,
     ContactRound,
@@ -32,6 +33,11 @@ const SideBarMenu = [
         routeLink: route('timetables.index'),
         routeName: 'Timetables',
         icon: <Clock />,
+    },
+    {
+        routeLink: route('dutylist.index'),
+        routeName: 'DutyList',
+        icon: <BookUser />,
     },
     {
         routeLink: route('students.index'),

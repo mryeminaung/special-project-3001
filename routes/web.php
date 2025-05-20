@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DutyListController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
@@ -33,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/students/export-to-excel', [StudentController::class, 'exportExcel'])->name('students.export-excel');
     Route::resource('students', StudentController::class);
+
+    Route::resource('dutylist', DutyListController::class);
 });
 
 require __DIR__ . '/exam.php';

@@ -45,6 +45,11 @@ class Faculty extends Model
         return $this->hasMany(ExamDuty::class);
     }
 
+    public function reservedDuties()
+    {
+        return $this->hasMany(ReservedList::class);
+    }
+
     public function canInvigilate()
     {
         return in_array($this->rank->title, ['Professor', 'Associate Professor']);
