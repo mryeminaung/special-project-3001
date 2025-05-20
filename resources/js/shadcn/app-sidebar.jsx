@@ -37,7 +37,7 @@ const SideBarMenu = [
     },
     {
         routeLink: route('dutylist.index'),
-        routeName: 'DutyList',
+        routeName: 'Duty List',
         icon: <BookUser />,
     },
     {

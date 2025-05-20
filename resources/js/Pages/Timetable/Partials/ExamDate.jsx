@@ -38,7 +38,7 @@ export default function ExamDate({
                                 type="date"
                                 name="exam_date"
                                 min="2024-12-01"
-                                max="2025-04-30"
+                                max="2025-06-30"
                                 className="block w-full dark:border-white"
                                 required
                             />

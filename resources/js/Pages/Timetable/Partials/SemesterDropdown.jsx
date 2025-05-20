@@ -37,7 +37,6 @@ export default function SemesterDropdown({
             <DropdownMenuContent className="w-44 bg-white dark:bg-main-purple dark:text-white sm:mr-8">
                 {semesters.map((semester) => (
                     <DropdownMenuItem
-                        disabled={semesterIds.includes(parseInt(semester.id))}
                         key={semester.id}
                         asChild
                     >
