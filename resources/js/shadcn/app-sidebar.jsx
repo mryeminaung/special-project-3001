@@ -15,7 +15,6 @@ import {
     Grid2x2,
     Layers,
     LayoutDashboard,
-    NotebookTabs,
     Settings,
     Users,
 } from 'lucide-react';

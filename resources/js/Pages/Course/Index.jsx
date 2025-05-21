@@ -75,7 +75,7 @@ export default function Index({
                                 href={route('courses.export-excel')}
                                 className="max-w-fit rounded-lg bg-primary-purple px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none sm:w-auto"
                             >
-                                Export Excel
+                                Export As Excel
                             </a>
                             <Link
                                 href={route('courses.create')}

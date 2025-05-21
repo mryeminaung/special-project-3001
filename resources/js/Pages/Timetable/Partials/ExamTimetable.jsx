@@ -24,7 +24,10 @@ export default function ExamTimetable({ exams, semester }) {
                             </div>
                             <div className="flex items-center gap-x-3">
                                 <a
-                                    href={route('courses.export-excel')}
+                                    href={route(
+                                        'timetables.export-excel',
+                                        semester.id,
+                                    )}
                                     className="max-w-fit rounded-lg bg-primary-purple px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none sm:w-auto"
                                 >
                                     Export As Excel

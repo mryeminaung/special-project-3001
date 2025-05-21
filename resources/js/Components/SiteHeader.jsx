@@ -11,6 +11,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/shadcn/ui/dropdown-menu';
+import { LayoutDashboard, LogOut, Settings } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function SiteHeader({ title }) {
@@ -53,7 +54,7 @@ export default function SiteHeader({ title }) {
                 </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <div className="group relative flex items-center gap-x-3 rounded-full bg-white px-2 py-1.5 transition-all duration-200 hover:bg-gradient-to-r hover:from-white hover:to-purple-50 hover:shadow-lg dark:border-gray-700 dark:bg-main-purple dark:hover:from-gray-800 dark:hover:to-purple-900/20">
+                        <div className="group relative flex items-center gap-x-3 rounded-full bg-white px-2 py-1.5 transition-all duration-200 hover:cursor-pointer hover:bg-gradient-to-r hover:from-white hover:to-purple-50 hover:shadow-lg dark:border-gray-700 dark:bg-main-purple dark:hover:from-gray-800 dark:hover:to-purple-900/20">
                             <span className="sr-only">Open user menu</span>
                             <div className="relative">
                                 <img
@@ -100,6 +101,7 @@ export default function SiteHeader({ title }) {
                                 className="px-4 py-2 hover:cursor-pointer dark:hover:bg-primary-purple/50"
                                 href="/dashboard"
                             >
+                                <LayoutDashboard className="h-4 w-4" />
                                 Dashboard
                             </Link>
                         </DropdownMenuItem>
@@ -108,6 +110,7 @@ export default function SiteHeader({ title }) {
                                 className="px-4 py-2 hover:cursor-pointer dark:hover:bg-primary-purple/50"
                                 href="/settings"
                             >
+                                <Settings className="h-4 w-4" />
                                 Settings
                             </Link>
                         </DropdownMenuItem>
@@ -117,6 +120,7 @@ export default function SiteHeader({ title }) {
                                 className="w-full px-4 py-2 hover:cursor-pointer dark:hover:bg-primary-purple/50"
                                 href="/logout"
                             >
+                                <LogOut className="h-4 w-4" />
                                 Logout
                             </Link>
                         </DropdownMenuItem>

@@ -61,7 +61,7 @@ export default function Index({ rooms, noOfTypeA, noOfTypeB }) {
                                 href={route('rooms.export-excel')}
                                 className="w-full rounded-lg bg-primary-purple px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none sm:w-auto"
                             >
-                                Export Excel
+                                Export As Excel
                             </a>
                             <Link
                                 href={route('rooms.create')}

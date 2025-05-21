@@ -32,9 +32,9 @@ export default function Index({ departments, noOfDepartments }) {
             </div>
 
             <TableWrapper>
-                <table className="font-inter w-full bg-white text-left text-sm dark:text-gray-400 rtl:text-right">
+                <table className="w-full bg-white text-left font-inter text-sm dark:text-gray-400 rtl:text-right">
                     <TableCaption>
-                        <div className="font-poppins flex items-center">
+                        <div className="flex items-center font-poppins">
                             <span className="">Department Lists</span>
                             <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-xs font-medium text-blue-800">
                                 Departments Information
@@ -45,7 +45,7 @@ export default function Index({ departments, noOfDepartments }) {
                                 href={route('departments.export-excel')}
                                 className="w-full rounded-lg bg-primary-purple px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none sm:w-auto"
                             >
-                                Export Excel
+                                Export As Excel
                             </a>
                             <Link
                                 href={route('faculties.create')}

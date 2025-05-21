@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Exports\TimetablesExport;
 use App\Models\Course;
 use App\Models\ExamPeriod;
 use App\Models\ExamSchedule;
@@ -12,8 +13,9 @@ use App\Services\DutyAllocator;
 use App\Services\ReservedListAllocator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExamController extends Controller
 {
@@ -36,6 +38,13 @@ class ExamController extends Controller
             'exams'      => $exams,
             'courseInfo' => $courseInfo,
         ]);
+    }
+
+    public function exportExcel()
+    {
+        $fileName = 'timetable-for-semester-' . request('semesterId') . "-" . now()->format('d-m-Y') . '.xlsx';
+        return Excel::download(new TimetablesExport, $fileName);
+
     }
 
     public function create()
@@ -75,16 +84,16 @@ class ExamController extends Controller
         $roomTypeB = RoomType::where('type', 'Type B')->first();
 
         $reservedListAllocator = new ReservedListAllocator();
-        $examDates = [];
+        $examDates             = [];
 
         try {
             foreach ($exams as $exam) {
                 $numberOfStudents = $exam['no_students'];
-                $examDate = $exam['exam_date'];
-                $examTimeId = $exam['exam_time_id'];
+                $examDate         = $exam['exam_date'];
+                $examTimeId       = $exam['exam_time_id'];
 
                 // Track unique exam dates
-                if (!in_array($examDate, $examDates)) {
+                if (! in_array($examDate, $examDates)) {
                     $examDates[] = $examDate;
                 }
 
@@ -95,9 +104,9 @@ class ExamController extends Controller
                     ->toArray();
 
                 // Calculate required rooms
-                $RA = intdiv($numberOfStudents, 60);
+                $RA        = intdiv($numberOfStudents, 60);
                 $remainder = $numberOfStudents % 60;
-                $RB = ceil($remainder / 30);
+                $RB        = ceil($remainder / 30);
 
                 // Allocate Type A rooms
                 $typeARooms = Room::where('room_type_id', $roomTypeA->id)
@@ -107,7 +116,7 @@ class ExamController extends Controller
 
                 // Calculate missing Type A capacity
                 $allocatedTypeA = $typeARooms->count();
-                $missingTypeA = $RA - $allocatedTypeA;
+                $missingTypeA   = $RA - $allocatedTypeA;
 
                 // Convert missing Type A to Type B (1 Type A = 2 Type B)
                 if ($missingTypeA > 0) {
@@ -127,28 +136,28 @@ class ExamController extends Controller
                 if ($allocatedRooms->count() < ($allocatedTypeA + $RB)) {
                     $timeSlot = ExamPeriod::find($examTimeId)->type;
                     return Redirect::back()->withErrors([
-                        'error' => "Not enough rooms available for {$exam['course_code']} on {$examDate} ({$timeSlot})"
+                        'error' => "Not enough rooms available for {$exam['course_code']} on {$examDate} ({$timeSlot})",
                     ]);
                 }
 
                 // Create exam schedules
                 foreach ($allocatedRooms as $room) {
                     $schedule = ExamSchedule::create([
-                        'semester_id' => $exam['semester_id'],
-                        'course_id' => $exam['course_id'],
-                        'exam_date' => $examDate,
+                        'semester_id'  => $exam['semester_id'],
+                        'course_id'    => $exam['course_id'],
+                        'exam_date'    => $examDate,
                         'exam_time_id' => $examTimeId,
-                        'room_id' => $room->id,
-                        'program_id' => $exam['program_id'],
-                        'no_students' => $numberOfStudents
+                        'room_id'      => $room->id,
+                        'program_id'   => $exam['program_id'],
+                        'no_students'  => $numberOfStudents,
                     ]);
 
                     // Mark room as used with time slot
                     RoomUsage::create([
-                        'date' => $examDate,
-                        'exam_time_id' => $examTimeId,
-                        'room_id' => $room->id,
-                        'exam_schedule_id' => $schedule->id
+                        'date'             => $examDate,
+                        'exam_time_id'     => $examTimeId,
+                        'room_id'          => $room->id,
+                        'exam_schedule_id' => $schedule->id,
                     ]);
 
                     // Duty Allocation Here

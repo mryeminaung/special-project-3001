@@ -1,3 +1,4 @@
+import ScrollIndicator from '@/Components/ScrollIndicator';
 import TableCaption from '@/Components/TableCaption';
 import TableHead from '@/Components/TableHead';
 import TableRow from '@/Components/TableRow';
@@ -16,8 +17,6 @@ import FacultyCard from './Partials/FacultyCard';
 import FacultyModal from './Partials/FacultyModal';
 import FacultyPagination from './Partials/FacultyPagination';
 import facultyImg from '/public/assets/user.jpg';
-import ScrollIndicator from '@/Components/ScrollIndicator';
-import { useSidebar } from '@/shadcn/ui/sidebar';
 
 export default function Index({
     faculties = [],
@@ -85,7 +84,7 @@ export default function Index({
                                 href={route('faculties.export-excel')}
                                 className="max-w-fit rounded-lg bg-primary-purple px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none sm:w-auto"
                             >
-                                Export Excel
+                                Export As Excel
                             </a>
                             <Link
                                 href={route('faculties.create')}

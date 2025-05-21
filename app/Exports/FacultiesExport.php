@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Exports;
 
 use App\Models\Faculty;
@@ -14,14 +13,14 @@ class FacultiesExport implements FromCollection, WithMapping, WithHeadings
      */
     public function collection()
     {
-        return Faculty::select(['name', 'phone_number', 'email', 'role_id', 'department_id'])->with(['role:id,title', 'department:id,name'])->get();
+        return Faculty::select(['name', 'phone_number', 'email', 'rank_id', 'department_id'])->with(['rank:id,title', 'department:id,name'])->get();
     }
 
     public function map($faculty): array
     {
         return [
             $faculty->name,
-            $faculty->role->title,
+            $faculty->rank->title,
             $faculty->email,
             $faculty->phone_number,
             $faculty->department->name,

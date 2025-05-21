@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DutyListsExport;
 use Inertia\Inertia;
 use App\Models\ExamDuty;
 use App\Models\ReservedList;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DutyListController extends Controller
 {
@@ -48,5 +50,11 @@ class DutyListController extends Controller
         return Inertia::render('DutyList/Index', [
             'groupedDuties' => $formattedData
         ]);
+    }
+
+    public function exportExcel()
+    {
+        $fileName = 'dutylist-' . now()->format('d-m-Y') . '.xlsx';
+        return Excel::download(new DutyListsExport, $fileName);
     }
 }

@@ -16,10 +16,11 @@ By using **CSP solutions**, this project aims to efficiently and effectively dev
 
     - **React:** A JavaScript library for building user interfaces, allowing for the creation of reusable UI components.
     - **Tailwind CSS:** A utility-first CSS framework for rapidly building custom designs without leaving your HTML.
+    - **Shadcn/ui:** A collection of beautifully designed, accessible React components built with Radix UI and Tailwind CSS, enabling rapid development of consistent and customizable user interfaces.
 
 - **Backend:**
     - **Laravel:** A PHP framework for web artisans, providing an elegant syntax and powerful tools for building robust applications.
-    - **Inertia.js:** A framework that allows you to create modern single-page React applications using classic server-side routing and controllers.
+    - **Inertia.js:** An adapter that connects your React frontend with your Laravel backend, enabling you to build modern single-page applications without the need for a separate API.
 
 ## Additional Tools
 
@@ -71,10 +72,10 @@ By using **CSP solutions**, this project aims to efficiently and effectively dev
     php artisan migrate
     ```
 
-6. Seeding database(optional)
+6. Seeding database
 
     ```bash
-    php artisan db:seed
+    php artisan migrate:fresh --seed
     ```
 
 7. Start the development server:

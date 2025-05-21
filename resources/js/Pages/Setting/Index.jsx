@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/shadcn/ui/avatar';
 import { Button } from '@/shadcn/ui/button';
 import { Card, CardContent } from '@/shadcn/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shadcn/ui/tabs';
-import { Head, useForm, usePage } from '@inertiajs/react';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import { Camera, Cog, LogOut, Mail, User } from 'lucide-react';
 import ChangePassword from './Partials/ChangePassword';
 import PersonalInfo from './Partials/PersonalInfo';
@@ -25,21 +25,14 @@ export default function Index() {
                         <h1 className="font-poppins text-2xl font-bold">
                             My Profile
                         </h1>
-                        <form
-                            onSubmit={() => {
-                                post(route('logout'));
-                            }}
+                        <Link
+                            method="post"
+                            href="/logout"
+                            className="flex items-center gap-x-2 rounded-lg bg-main-purple px-3 py-1.5 text-white hover:bg-main-purple/90 dark:bg-primary-purple"
                         >
-                            <Button
-                                type="submit"
-                                variant="secondary"
-                                className="bg-main-purple text-white hover:bg-main-purple/90 dark:bg-primary-purple"
-                                size="sm"
-                            >
-                                <LogOut className="h-4 w-4" />
-                                Logout
-                            </Button>
-                        </form>
+                            <LogOut className="h-4 w-4" />
+                            Logout
+                        </Link>
                     </div>
 
                     <div className="flex flex-col gap-y-5 md:gap-x-5 lg:flex-row">

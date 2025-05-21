@@ -4,19 +4,11 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DutyListController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
-use App\Models\Course;
-use App\Models\ExamPeriod;
-use App\Models\ExamSchedule;
-use App\Models\Faculty;
-use App\Models\Semester;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::middleware('auth')->group(function () {
 
@@ -35,7 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/students/export-to-excel', [StudentController::class, 'exportExcel'])->name('students.export-excel');
     Route::resource('students', StudentController::class);
 
+    Route::get('/dutylist/export-to-excel', [DutyListController::class, 'exportExcel'])->name('dutylist.export-excel');
     Route::resource('dutylist', DutyListController::class);
+
+    Route::get('timetables/{semesterId}/export-to-excel', [Examcontroller::class, 'exportExcel'])->name('timetables.export-excel');
 });
 
 require __DIR__ . '/exam.php';
