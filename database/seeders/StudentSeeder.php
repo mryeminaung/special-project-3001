@@ -15,7 +15,7 @@ class StudentSeeder extends Seeder
     {
         // Define years, departments, and roll numbers
         // $year_sems = ['2018' => 9, '2019' => 7, '2021' => 5, '2022' => 3, '2023' => 1];
-        $year_sems = ['2019' => 7];
+        $year_sems = ['2019' => 7, '2021' => 5, '2022' => 3, '2023' => 1];
         $majors = ['cse', 'ece'];
 
         $rollNumbers = range(1, 60); // 001 to 060

@@ -24,6 +24,13 @@ class FacultySeeder extends Seeder
             'created_at' => now(),
         ]);
 
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@miit.edu.mm',
+            'password' => 'password',
+            'created_at' => now(),
+        ]);
+
         $data = [];
         $usedEmails = []; // Track generated emails
 

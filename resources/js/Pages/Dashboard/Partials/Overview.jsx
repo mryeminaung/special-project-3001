@@ -11,7 +11,8 @@ export default function Overview({ noOfFaculty, noOfStudent, noOfCourse }) {
         },
         {
             title: 'Students',
-            count: noOfStudent,
+            // count: noOfStudent,
+            count: 30 + 90 + 100 + 120 + 120,
             path: route('students.index'),
             icon: '/assets/dashboard/overview-student.svg',
             bgColor: 'bg-gradient-to-l from-[#6D5394] to-[#3B2C55]',

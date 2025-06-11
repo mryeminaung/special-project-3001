@@ -130,7 +130,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 4,
                 "program_id" => 1,
-                "faculty_id" => 1,
+                "faculty_id" => 12,
                 "semester_id" => 5
             ],
             [
@@ -139,7 +139,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 3,
                 "program_id" => 3,
-                "faculty_id" => 2,
+                "faculty_id" => 13,
                 "semester_id" => 5
             ],
             [
@@ -148,7 +148,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 2,
                 "program_id" => 3,
-                "faculty_id" => 3,
+                "faculty_id" => 14,
                 "semester_id" => 5
             ],
             [
@@ -157,7 +157,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 3,
                 "program_id" => 3,
-                "faculty_id" => 4,
+                "faculty_id" => 15,
                 "semester_id" => 5
             ],
             [
@@ -166,7 +166,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 4,
                 "program_id" => 2,
-                "faculty_id" => 5,
+                "faculty_id" => 16,
                 "semester_id" => 5
             ],
             [
@@ -175,7 +175,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 1,
                 "program_id" => 2,
-                "faculty_id" => 6,
+                "faculty_id" => 17,
                 "semester_id" => 5
             ],
             [
@@ -184,7 +184,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 4,
                 "program_id" => 2,
-                "faculty_id" => 7,
+                "faculty_id" => 18,
                 "semester_id" => 5
             ],
             [
@@ -193,7 +193,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 2,
                 "program_id" => 3,
-                "faculty_id" => 8,
+                "faculty_id" => 19,
                 "semester_id" => 5
             ],
             [
@@ -202,7 +202,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 4,
                 "program_id" => 3,
-                "faculty_id" => 9,
+                "faculty_id" => 20,
                 "semester_id" => 5
             ],
             [
@@ -211,7 +211,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 1,
                 "program_id" => 3,
-                "faculty_id" => 10,
+                "faculty_id" => 21,
                 "semester_id" => 5
             ],
             [
@@ -220,7 +220,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 1,
                 "program_id" => 1,
-                "faculty_id" => 11,
+                "faculty_id" => 22,
                 "semester_id" => 5
             ],
             [
@@ -229,7 +229,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 1,
                 "program_id" => 2,
-                "faculty_id" => 12,
+                "faculty_id" => 23,
                 "semester_id" => 5
             ]
         ];
@@ -240,8 +240,8 @@ class CourseSeeder extends Seeder
                 "course_code" => "CSE 2010",
                 "course_type_id" => 1,
                 "credit" => 5,
-                "program_id" => 2,
-                "faculty_id" => 1,
+                "program_id" => 1,
+                "faculty_id" => 24,
                 "semester_id" => 3
             ],
             [
@@ -250,7 +250,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 4,
                 "program_id" => 3,
-                "faculty_id" => 2,
+                "faculty_id" => 25,
                 "semester_id" => 3
             ],
             [
@@ -259,7 +259,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 1,
                 "program_id" => 3,
-                "faculty_id" => 3,
+                "faculty_id" => 26,
                 "semester_id" => 3
             ],
             [
@@ -268,7 +268,7 @@ class CourseSeeder extends Seeder
                 "course_type_id" => 1,
                 "credit" => 4,
                 "program_id" => 3,
-                "faculty_id" => 4,
+                "faculty_id" => 27,
                 "semester_id" => 3
             ],
             [

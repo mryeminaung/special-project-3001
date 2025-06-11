@@ -70,7 +70,9 @@ export default function SiteHeader({ title }) {
                                     {user.name}
                                 </p>
                                 <span className="text-xs text-gray-500 transition-colors duration-300 group-hover:text-gray-600 dark:text-gray-400 dark:group-hover:text-gray-300">
-                                    Pro-Rector
+                                    {user.email === 'admin@miit.edu.mm'
+                                        ? 'Rector'
+                                        : 'Pro-Rector'}
                                 </span>
                             </div>
 

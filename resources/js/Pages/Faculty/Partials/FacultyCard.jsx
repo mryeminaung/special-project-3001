@@ -21,9 +21,14 @@ export default function FacultyCard({ name, count, url }) {
                     <h2 className="line-clamp-2 font-poppins text-[15px] font-semibold text-gray-900 dark:text-white sm:text-base lg:text-lg">
                         {name}
                     </h2>
-                    <p className="mt-1 font-poppins text-lg font-bold text-primary-purple dark:text-purple-200 lg:text-xl">
-                        {count}
-                    </p>
+                    <div className="flex items-center space-x-2">
+                        <p className="mt-1 font-poppins text-lg font-bold text-primary-purple dark:text-purple-200 lg:text-xl">
+                            {count}
+                        </p>
+                        <span className="font-bold text-primary-purple dark:text-purple-200">
+                            Faculties
+                        </span>
+                    </div>
                 </div>
             </div>
         </Link>

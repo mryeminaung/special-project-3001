@@ -21,9 +21,14 @@ export default function StudentCard({ name, count }) {
                     <h2 className="text-md line-clamp-2 font-poppins font-semibold text-gray-900 dark:text-white xl:text-xl">
                         {name}
                     </h2>
-                    <p className="mt-1 font-poppins text-lg font-bold text-primary-purple dark:text-purple-200 xl:text-3xl">
-                        {count}
-                    </p>
+                    <div className="flex items-center space-x-2">
+                        <p className="mt-1 font-poppins text-lg font-bold text-primary-purple dark:text-purple-200 xl:text-3xl">
+                            {count}
+                        </p>
+                        <span className="font-bold text-primary-purple dark:text-purple-200">
+                            Students
+                        </span>
+                    </div>
                 </div>
             </div>
         </Link>

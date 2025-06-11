@@ -14,14 +14,13 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
         $departments = [
+            ["name" => "Natural Language", "dept_code" => "NL"],
+            ["name" => "Natural Science", "dept_code" => "NS"],
             ["name" => "Computer Science", "dept_code" => "CS"],
-            ["name" => "Computer Engineering", "dept_code" => "CE"],
-            ["name" => "Software Engineering", "dept_code" => "SE"],
-            ["name" => "Information Science and Technology", "dept_code" => "IST"],
-            ["name" => "Data Science and Artificial Intelligence", "dept_code" => "DS & AI"],
-            ["name" => "Networking and Cybersecurity", "dept_code" => "NCS"],
-            ["name" => "Robotics and Automation", "dept_code" => "RA"],
-            ["name" => "Electronics and Communications Engineering", "dept_code" => "ECE"],
+            ["name" => "Computer Science and Technology", "dept_code" => "CST"],
+            ["name" => "Computing", "dept_code" => "COMP"],
+            ["name" => "Information Technology Service Management", "dept_code" => "ITSM"],
+            ["name" => "Information Science", "dept_code" => "IS"]
         ];
 
         foreach ($departments as $department) {

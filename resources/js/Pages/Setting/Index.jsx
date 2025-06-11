@@ -45,6 +45,7 @@ export default function Index() {
                                                 src={admin}
                                                 alt={user.name}
                                             />
+
                                             <AvatarFallback>MT</AvatarFallback>
                                         </Avatar>
                                         <Button
@@ -63,7 +64,9 @@ export default function Index() {
                                             {user.name}
                                         </h2>
                                         <p className="text-sm text-muted-foreground">
-                                            Pro-Rector
+                                            {user.email === 'admin@miit.edu.mm'
+                                                ? 'Rector'
+                                                : 'Pro-Rector'}
                                         </p>
                                         <p className="text-sm text-muted-foreground">
                                             {user.email}

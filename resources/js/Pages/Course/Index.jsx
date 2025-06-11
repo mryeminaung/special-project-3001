@@ -42,7 +42,7 @@ export default function Index({
                     </Link>
                 </h2>
 
-                <div className="mt-5 grid w-full gap-x-4 gap-y-4 sm:grid-cols-2 md:grid-cols-2 md:gap-x-7 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-5">
+                <div className="mt-5 grid w-full gap-x-4 gap-y-4 sm:grid-cols-2 md:grid-cols-2 md:gap-x-7 lg:grid-cols-3 xl:gap-x-10 2xl:grid-cols-4">
                     <CourseCard
                         url="?program=cse and ece"
                         name="CSE & ECE"

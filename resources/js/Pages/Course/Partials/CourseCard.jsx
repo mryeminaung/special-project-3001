@@ -21,9 +21,14 @@ export default function CourseCard({ name, count, url }) {
                     <h2 className="text-md line-clamp-2 font-poppins font-semibold text-gray-900 dark:text-white lg:text-xl">
                         {name}
                     </h2>
-                    <p className="mt-1 font-poppins text-xl font-bold text-primary-purple dark:text-purple-200 lg:text-2xl">
-                        {count}
-                    </p>
+                    <div className="flex items-center space-x-2">
+                        <p className="mt-1 font-poppins text-xl font-bold text-primary-purple dark:text-purple-200 lg:text-2xl">
+                            {count}
+                        </p>
+                        <span className="font-bold text-primary-purple dark:text-purple-200">
+                            Courses
+                        </span>
+                    </div>
                 </div>
             </div>
         </Link>

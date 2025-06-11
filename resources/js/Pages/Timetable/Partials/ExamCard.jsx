@@ -12,7 +12,12 @@ export default function ExamCard({ semesterId, courseInfo }) {
             </div>
             <div className="space-y-2">
                 <h2 className="text-xl font-semibold">Semester {semesterId}</h2>
-                <p className="text-3xl font-bold">{courseInfo[semesterId]}</p>
+                <div className="flex items-center space-x-2">
+                    <p className="text-3xl font-bold">
+                        {courseInfo[semesterId]}{' '}
+                    </p>
+                    <span className="font-bold">Courses</span>
+                </div>
             </div>
         </Link>
     );

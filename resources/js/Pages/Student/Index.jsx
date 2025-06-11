@@ -41,15 +41,17 @@ export default function Index({ students, noOfStudent }) {
                     <Link href="/students">
                         Total Students
                         <span className="ms-2 rounded-full border border-blue-300 bg-blue-100 px-2.5 py-1 text-base font-medium text-blue-800">
-                            {noOfStudent}
+                            {/* {noOfStudent} */}
+                            {30 + 90 + 100 + 120 + 120}
                         </span>
                     </Link>
                 </h2>
                 <div className="mdhidden mt-5 grid w-full gap-x-5 gap-y-5 sm:grid-cols-2 md:gap-x-5 lg:grid-cols-4 lg:gap-x-8">
-                    <StudentCard name="BE-2019" count={120} />
-                    <StudentCard name="BE-2020" count={120} />
-                    <StudentCard name="BE-2021" count={120} />
-                    <StudentCard name="BE-2022" count={120} />
+                    <StudentCard name="BE-2019" count={30} />
+                    <StudentCard name="BE-2021" count={90} />
+                    <StudentCard name="BE-2022" count={100} />
+                    <StudentCard name="BE-2023" count={120} />
+                    <StudentCard name="BE-2024" count={120} />
                 </div>
             </div>
 
